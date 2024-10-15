@@ -61,9 +61,9 @@
 
 
 <script>
-  let listProductsRaw;
-  let colorsGlobalName = [];
-  let listProductsClean = [];
+  let productsClean = [];
+  // let colorsGlobalName = [];
+  let listIteration = [];
 
   async function fetchProducts (page = 1 , dataProducts = []) {
     const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title&order=asc&stock_status=instock&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
@@ -73,62 +73,124 @@
       console.error(e) // error handling
       return [] //returns no-results
     })
+    console.log(`Fetched ${responseProducts.length} ${responseProducts.length !== 1 ? 'items' : "item"} on page ${page}`)
 
     responseProducts.forEach(product => {
       dataProducts.push(product);
     });
 
-    console.log(responseProducts.length);
     page++
 
     if(responseProducts.length >= 100) return fetchProducts(page,dataProducts)
     else return dataProducts
   }
 
-  fetchProducts().then( products => {
-    listProductsRaw = products
-    let listNameIteration = [];
-    listProductsRaw.forEach(product => {
-      // Para cada Produto guardado no array, guarda o último trecho escrito (a cor) em uma nova key (color_variations) do objeto Produto
-      if (product.type == "simple")
-      product.color_variations = product.name.split(/\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm).pop();
+  // Executa a função de recuperar os itens da API e gera uma lista tratada a partir das informações obtidas
+  fetchProducts().then(products => {
+    // Para cada produto no array 'products' irá,
+    // -> extrair a informação de cor do nome do produto,
+    // -> associar a cor a uma key no objeto do produto,
+    // -> extrair a informação de nome do produto até o nome do tecido,
+    // -> criar um novo array com o objeto do produto e todas as suas informações de base,
+    // -> associar todas as cores extraídas ao seu devido produto,
+    // -> associar todas as imagens das cores às suas variações específicas
 
-      // Descarta a cor e o espaço anterior a ela, deixando apeans o nome do produto + tecido na string
+    // Lista que irá guardar todos os nomes (sem a cor) de produtos já processados
+    let listIterationLocal = [];
+
+    products.forEach(product => {
+
+      // -> extrair a informação de cor do nome do produto,
+      // -> associar a cor a uma key no objeto do produto,
+      product.color_variations = product.name.split(/\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm).pop();
+      // -> extrair a informação de nome do produto até o nome do tecido, e gravar na variavel "name"
       let name = product.name.split(" " + product.color_variations).shift()
 
-      // Adiciona objetos dos produtos a uma matriz caso eles já não existam nela
-      if (listNameIteration.indexOf(name) === -1) {
-        console.log(name);
+      // Caso o nome não exista na lista de iteração, fazer algumas coisas
+      if (listIterationLocal.indexOf(name) === -1) {
 
-        listNameIteration.push(name);
-        listProductsClean.push(
-          {
-            id: product.id,
-            name: name,
-            variations_color: {
-              color: product.color_variations,
-              images: product.images
-            }
-          }
-        )
-        // Repete o nome da cor abaixo do objeto, >só para saber se a iteração está funcionando<
-        listProductsClean.push(product.color_variations)
+        // Registrar nome na lista de iteração para as próximas conferências em 'products'
+        listIterationLocal.push(name = name);
 
-        // Caso os nomes existam na matriz, adiciona os nomes das cores abaixo do objeto, >só para saber se a iteração está funcionando<
-      } else {
-        listProductsClean.push(product.color_variations)
+        let productNew = {
+          id: product.id,
+          name: product.name,
+          slug: product.slug,
+          permalink: product.permalink ,
+          status: product.status ,
+          date_created: product.date_created ,
+          catalog_visibility: product.catalog_visibility ,
+          sku: product.sku ,
+          price: product.price ,
+          price_sale: product.price_sale ,
+          price_interest: product.price_interest ,
+          price_interest_sale: product.price_interest_sale ,
+          on_sale: product.on_sale ,
+          stock_status: product.stock_status ,
+          price_sale_interest: product.price_sale_interest ,
+          categories: product.categories ,
+          images: product.images ,
+          attributes: product.attributes
+        }
+
+        productsClean.push(productNew);
+
       }
 
-      // Guarda a cor em um array desde que ela já não exista
-      if (colorsGlobalName.indexOf(product.color_variations) === -1) {
-        colorsGlobalName.push(product.color_variations);
-      }
 
-
-      // Ordena o array global de cores alfabeticamente
-      colorsGlobalName.sort();
+      // Criar um objeto novo a partir das informações processadas. Se um objeto de mesmo name já foi processado, apenas adicionar os objetos pertinentes ao objeto já existente.
+      listIteration = listIterationLocal;
     });
+
+    // -> Salvar o array novo em uma variável global,
+
+    console.log(listIteration);
   });
+
+  // fetchProducts().then( products => {
+  //   listProductsRaw = products
+  //   let listNameIteration = [];
+  //   listProductsRaw.forEach(product => {
+  //     // Para cada Produto guardado no array, guarda o último trecho escrito (a cor) em uma nova key (color_variations) do objeto Produto
+  //     if (product.type == "simple")
+  //     product.color_variations = product.name.split(/\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm).pop();
+
+  //     // Descarta a cor e o espaço anterior a ela, deixando apeans o nome do produto + tecido na string
+  //     let name = product.name.split(" " + product.color_variations).shift()
+
+  //     // Adiciona objetos dos produtos a uma matriz caso eles já não existam nela
+  //     if (listNameIteration.indexOf(name) === -1) {
+  //       console.log(name);
+
+  //       listNameIteration.push(name);
+  //       listProductsClean.push(
+  //         {
+  //           id: product.id,
+  //           name: name,
+  //           variations_color: {
+  //             color: product.color_variations,
+  //             images: product.images
+  //           }
+  //         }
+  //       )
+  //       // Repete o nome da cor abaixo do objeto, >só para saber se a iteração está funcionando<
+  //       listProductsClean.push(product.color_variations)
+
+  //       // Caso os nomes existam na matriz, adiciona os nomes das cores abaixo do objeto, >só para saber se a iteração está funcionando<
+  //     } else {
+  //       listProductsClean.push(product.color_variations)
+  //     }
+
+  //     // Guarda a cor em um array desde que ela já não exista
+  //     if (colorsGlobalName.indexOf(product.color_variations) === -1) {
+  //       colorsGlobalName.push(product.color_variations);
+  //     }
+
+
+  //     // Ordena o array global de cores alfabeticamente
+  //     colorsGlobalName.sort();
+  //   });
+  // });
 
 </script>
 
