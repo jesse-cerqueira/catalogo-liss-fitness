@@ -27,8 +27,13 @@
         <path d="M10.5 19.5L3 12M3 12L10.5 4.5M3 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
-    <h1 class="h4">Nome da Categoria</h1>
+    <h1 class="h4">Legging + Top Tamanho Único</h1>
   </header>
+
+  <ul id="list-products">
+    
+  </ul>
+
   <article class="wrapper-product">
     <header>
       <h2 class="h5">Nome do Produto</h2>
@@ -70,6 +75,84 @@
   </article>
 
   <script>
+    let productsClean = []; //armazenará o array com produtos >tratados<
+
+    async function fetchProducts (page = 1 , dataProducts = [] , category = "16") {
+      const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&category=${category}&orderby=title&order=asc&stock_status=instock&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
+
+      console.log(`Fetching page: ${page}`)
+
+      const responseProducts = await fetch(apiEndpoint).then( x => x.json()).catch((e) => {
+        console.error(e) // error handling
+        return [] //returns no-results
+      })
+
+      console.log(`Fetched ${responseProducts.length} ${responseProducts.length !== 1 ? 'items' : "item"} on page ${page}`)
+
+      responseProducts.forEach(product => {
+        dataProducts.push(product);
+      });
+
+      page++
+
+      if(responseProducts.length >= 100) return fetchProducts(page,dataProducts)
+      else return dataProducts
+    }
+
+    // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
+    fetchProducts().then(products => { 
+
+      let listIteration = []; // Lista que irá guardar todos os nomes (sem a cor) de produtos já processados
+
+      products.forEach(product => {
+        // -> extrair a string de cor do nome do produto,
+        product.color_variations = product.name.split(/\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm).pop();
+
+        // -> extrair a informação de nome do produto até o nome do tecido, e gravar na variavel "name"
+        let name = product.name.split(" " + product.color_variations).shift()
+
+        let variationColor = {
+          color_name: product.color_variations,
+          images: product.images,
+          slug: product.slug,
+          permalink: product.permalink,
+          // date_created: product.date_created,
+        }
+
+        let productNew = {
+          id: product.id,
+          name: name,
+          status: product.status,
+          sku: product.sku,
+          price: product.price,
+          price_sale: product.price_sale,
+          price_interest: product.price_interest,
+          price_interest_sale: product.price_interest_sale,
+          on_sale: product.on_sale,
+          // stock_status: product.stock_status,
+          categories: product.categories,
+          images: product.images,
+          attributes: product.attributes,
+          color_variations: []
+        }
+        
+        // Caso o nome não exista na lista de iteração, fazer algumas coisas
+        if (listIteration.indexOf(name) === -1) {
+
+          // Registrar nome na lista de iteração para as próximas conferências em 'products'
+          listIteration.push(name = name);
+
+          productNew.color_variations.push(variationColor);
+          productsClean.push(productNew);
+          
+        } 
+        else 
+        {
+          productsClean[productsClean.length - 1].color_variations.push(variationColor);
+        }
+      });
+    });
+
     const swiper = new Swiper('.swiper', {
       // Optional parameters
       direction: 'horizontal',
