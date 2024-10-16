@@ -58,7 +58,7 @@ body {
 
 :root {
   font-size: 16px;
-} 
+}
 
 ul {
   padding-inline-start: 0;
@@ -71,13 +71,34 @@ body {
   color: #1F141A;
 }
 
-h1, .h1 { font-size: 2.5rem; }
-h2, .h2 { font-size: 2rem; }
-h3, .h3 { font-size: 1.75rem; }
-h4, .h4 { font-size: 1.5rem; }
-h5, .h5 { font-size: 1.25rem; }
-h6, .h6 { font-size: 1rem; }
+h1, .h1 { font-size: 2.5rem; line-height: 1.25; }
+h2, .h2 { font-size: 2rem; line-height: 1.25; }
+h3, .h3 { font-size: 1.75rem; line-height: 1.25; }
+h4, .h4 { font-size: 1.5rem; line-height: 1.2; }
+h5, .h5 { font-size: 1.25rem; line-height: 1.2; }
+h6, .h6 { font-size: 1rem; line-height: 1.2; }
 
 :root {
   --padding-x-global: 1.25rem;
+}
+
+a {
+  &.btn {
+    display: block;
+    width: fit-content;
+    font-size: 1rem;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1F141A;
+
+    &.btn-md {
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    &.btn-primary {
+      background-color: #BF208F;
+    }
+  }
 }

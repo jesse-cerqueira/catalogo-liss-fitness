@@ -30,8 +30,8 @@
   <h1 class="h4">Legging + Top Tamanho Único</h1>
 </header>
 
-<ul id="list-products">
-  
+<ul id="list-products" style="max-width: 500px; margin: 0 auto;">
+
 </ul>
 
 <article class="wrapper-product" hidden>
@@ -102,7 +102,7 @@
   }
 
   // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
-  fetchProducts().then(products => { 
+  fetchProducts().then(products => {
 
     let listIteration = []; // Lista que irá guardar todos os nomes (sem a cor) de produtos já processados
 
@@ -120,7 +120,7 @@
         permalink: product.permalink,
         // date_created: product.date_created,
       }
-      
+
       let productNew = {
         id: product.id,
         name: name,
@@ -137,7 +137,7 @@
         attributes: product.attributes,
         color_variations: []
       }
-      
+
       // Caso o nome não exista na lista de iteração, fazer algumas coisas
       if (listIteration.indexOf(name) === -1) {
 
@@ -146,9 +146,9 @@
 
         productNew.color_variations.push(variationColor);
         productsClean.push(productNew);
-        
-      } 
-      else 
+
+      }
+      else
       {
         productsClean[productsClean.length - 1].color_variations.push(variationColor);
       }
@@ -161,7 +161,7 @@
           return `
             <article class="wrapper-product">
               <header>
-                <h2 class="h5">${product.name} <span>${product.color_variations[0].color_name}</span></h2>
+                <h2 class="h5">${product.name} <span class="variation-name">${product.color_variations[0].color_name}</span></h2>
               </header>
               <div class="product-prices">
                 <span class="product-price">R$ <span class="product-price-value">${product.price}</span></span>
@@ -182,13 +182,15 @@
               <div class="swiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <img src="${product.color_variations[0].images[0].src}" width="1600" height="1600" class="image-product" alt="">
+                    <img src="${product.color_variations[0].images[0].src}" width="1600" height="1600" class="image-product" alt="" loading="lazy">
                   </div>
                 </div>
               </div>
-              <a href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20${product.color_variations[0].permalink}">Comprar com atendente</a>
+              <div class="wrapper-actions">
+                <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20${product.color_variations[0].permalink}" target="blank">Comprar com atendente</a>
+              </div>
             </article>
-          `;
+          `
         })
         .join("");
         list.innerHTML = HTML;
@@ -199,7 +201,7 @@
 
   const swiper = new Swiper('.swiper', {
     // Optional parameters
-    direction: 'hor izontal',
+    direction: 'horizontal',
     spaceBetween: 8,
 
     // If we need pagination
