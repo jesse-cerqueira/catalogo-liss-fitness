@@ -120,7 +120,7 @@
         permalink: product.permalink,
         // date_created: product.date_created,
       }
-
+      
       let productNew = {
         id: product.id,
         name: name,
@@ -161,7 +161,7 @@
           return `
             <article class="wrapper-product">
               <header>
-                <h2 class="h5">${product.name} </h2>
+                <h2 class="h5">${product.name} <span>${product.color_variations[0].color_name}</span></h2>
               </header>
               <div class="product-prices">
                 <span class="product-price">R$ <span class="product-price-value">${product.price}</span></span>
@@ -182,11 +182,11 @@
               <div class="swiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <img src="https://placehold.co/1600x1600" width="1600" height="1600" class="image-product" alt="">
+                    <img src="${product.color_variations[0].images[0].src}" width="1600" height="1600" class="image-product" alt="">
                   </div>
                 </div>
               </div>
-              <a href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre${ product.name},%20${product.permalink}">Comprar com atendente</a>
+              <a href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20${product.color_variations[0].permalink}">Comprar com atendente</a>
             </article>
           `;
         })
@@ -199,7 +199,7 @@
 
   const swiper = new Swiper('.swiper', {
     // Optional parameters
-    direction: 'horizontal',
+    direction: 'hor izontal',
     spaceBetween: 8,
 
     // If we need pagination
