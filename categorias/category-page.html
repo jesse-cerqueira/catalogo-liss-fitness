@@ -27,7 +27,7 @@
       <path d="M10.5 19.5L3 12M3 12L10.5 4.5M3 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
-  <h1 class="h4">Legging + Top Tamanho Único</h1>
+  <h1 class="h5">Legging + Top Tamanho Único</h1>
 </header>
 
 <ul id="list-products" style="max-width: 500px; margin: 0 auto;">
@@ -146,7 +146,6 @@
 
         productNew.color_variations.push(variationColor);
         productsClean.push(productNew);
-
       }
       else
       {
@@ -154,18 +153,22 @@
       }
     });
 
-    // Montar HTML com informações estruturadas de produtos
-    const renderProducts = (array) => {
-      const HTML = array
+    // Renderizar itens da lista em HTML com informações estruturadas de produtos
+    const renderListedProducts = (array) => {
+      const listItemHTML = array
         .map((product)=> {
           return `
-            <article class="wrapper-product">
+            <article
+              class="wrapper-product"
+              data-product-name="${product.name}"
+              data-variation-name="${product.color_variations[0].color_name}"
+            >
               <header>
                 <h2 class="h5">${product.name} <span class="variation-name">${product.color_variations[0].color_name}</span></h2>
               </header>
               <div class="product-prices">
                 <span class="product-price">R$ <span class="product-price-value">${product.price}</span></span>
-                <span class="product-price-interest">no PIX, ou até 3× de R$ <span class="product-price-3x-value">${product.price * 1.1 / 3}</span></span>
+                <span class="product-price-details">no PIX, ou até 3× de R$ <span class="product-price-3x-value">${product.price * 1.1 / 3}</span></span>
               </div>
               <div class="wrapper-swatches-color">
                 <div class="swatch-color"></div>
@@ -187,15 +190,15 @@
                 </div>
               </div>
               <div class="wrapper-actions">
-                <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20${product.color_variations[0].permalink}" target="blank">Comprar com atendente</a>
+                <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20${product.color_variations[0].images[0].src}" target="blank">Comprar com atendente</a>
               </div>
             </article>
           `
         })
         .join("");
-        list.innerHTML = HTML;
+        list.innerHTML = listItemHTML;
       }
-    renderProducts(productsClean);
+    renderListedProducts(productsClean);
 
   });
 
