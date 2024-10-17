@@ -156,7 +156,7 @@
     // Renderizar itens da lista em HTML com informações estruturadas de produtos
     const renderListedProducts = (array) => {
       const listItemHTML = array
-        .map((product)=> {
+        .map((product) => {
           return `
             <article
               class="wrapper-product"
@@ -197,7 +197,7 @@
         })
         .join("");
         list.innerHTML = listItemHTML;
-      }
+    }
     renderListedProducts(productsClean);
 
   });
