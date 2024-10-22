@@ -21,9 +21,6 @@ header {
 
 article {
   /* overflow: hidden; */
-  &:first-of-type {
-    margin-top: ;
-  }
 
   &.wrapper-product {
     padding-left: var(--padding-x-global);
@@ -161,13 +158,21 @@ article {
       height: auto;
       aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 12px;
     }
 
     .swiper {
-      overflow: visible;
-      margin-left: -12px;
-      margin-right: -12px;
+      &.swiper-outer {
+        overflow: visible !important;
+        /* margin-left: -12px !important;
+        margin-right: -12px !important; */
+      }
+
+      &.swiper-inner {
+        .swiper-slide {
+          border-radius: 12px;
+          overflow: hidden;
+        }
+      }
     }
   }
 }

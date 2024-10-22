@@ -14,11 +14,16 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 </head>
 
-<style>
+<!-- <style>
   .swiper {
     height: auto;
+
+    &.swiper-inner {
+      /* overflow: hidden !important; */
+      max-width: 100%;
+    }
   }
-</style>
+</style> -->
 
 <body>
 <header class="title-bar">
@@ -30,7 +35,7 @@
   <h1 class="h5">Legging + Top Tamanho Único</h1>
 </header>
 
-<ul id="list-products" style="max-width: 500px; margin: 0 auto;">
+<ul style="max-width: 500px; margin: 0 auto; overflow: hidden;">
   <article class="wrapper-product" hidden>
     <header>
       <h2 class="h5">Nome do Produto</h2>
@@ -52,19 +57,30 @@
       <div class="swatch-size">G</div>
       <div class="swatch-size">GG</div>
     </div>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="https://placehold.co/1600x1600" width="1600" height="1600" class="image-product" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://placehold.co/1600x1600" width="1600" height="1600" class="image-product" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://placehold.co/1600x1600" width="1600" height="1600" class="image-product" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://placehold.co/1600x1600" width="1600" height="1600" class="image-product" alt="">
+    <div class="wrapper-sliders-swiper">
+      <div class="swiper swiper-outer">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="swiper swiper-inner">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="swiper-zoom-container">
+                    <img src="https://placehold.co/1600x1600?text=Fúcsia Frente" width="1600" height="1600" class="image-product" alt="">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="swiper-zoom-container">
+                    <img src="https://placehold.co/1600x1600?text=Fúcsia Costas" width="1600" height="1600" class="image-product" alt="">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="swiper-zoom-container">
+                    <img src="https://placehold.co/1600x1600?text=Fúcsia Lado" width="1600" height="1600" class="image-product" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,8 +88,9 @@
       <a href="https://api.whatsapp.com/send?phone=5527999498626&text=Tenho%20interesse%20no%20Short%20Snip%20+%20Top%20Tha%C3%ADs%20Compress%C3%A3o%20Lilac,%20https://lissfitness.com.br/loja/conjunto-short/short-snip-top-thais-compressao-lilac/" class="btn btn-md btn-primary">Comprar com atendente</a>
     </div>
   </article>
-
 </ul>
+
+<ul id="list-products" style="max-width: 500px; margin: 0 auto;"></ul>
 
 
 <script>
@@ -82,7 +99,7 @@
   let productsClean = []; //armazenará o array com produtos >tratados<
 
   async function fetchProducts (page = 1 , dataProducts = [] , category = "16") {
-    const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&category=${category}&orderby=title&order=asc&stock_status=instock&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
+    const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&category=${category}&orderby=title&order=desc&stock_status=instock&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
 
     console.log(`Fetching page: ${page}`)
 
@@ -156,6 +173,32 @@
       }
     });
 
+    // function swiperVariationImages(arr) {}
+
+    function swiperVariations(arr) {
+      return `
+        ${arr.color_variations.map((variation) => {
+          return `
+            <div class="swiper-slide" data-slide-for-color="${variation.color_name}">
+              <div class="swiper swiper-inner">
+                <div class="swiper-wrapper">
+                  ${ variation.images.map((image) => {
+                    return `
+                      <div class="swiper-slide" data-slide-for-color="${variation.color_name}">
+                        <div class="swiper-zoom-container">
+                          <img src="${ image.src }" width="1600" height="1600" class="image-product" alt="">
+                        </div>
+                      </div>
+                    `
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+          `
+        }).join('')}
+      `
+    }
+
     function swatchesSize(arr) {
       return `
         <div class="wrapper-swatches-size">
@@ -188,10 +231,10 @@
           </div>
           ${product.color_variations ? swatchesColor(product) : ''}
           ${product.attributes.find(obj => obj.name === 'TAMANHO') ? swatchesSize(product) : ''}
-          <div class="swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="${product.color_variations?.[0]?.images?.[0]?.src}" width="1600" height="1600" class="image-product" alt="" loading="lazy">
+          <div class="wrapper-sliders-swiper">
+            <div class="swiper swiper-outer">
+              <div class="swiper-wrapper">
+                ${ swiperVariations(product) }
               </div>
             </div>
           </div>
@@ -205,8 +248,35 @@
     list.innerHTML = `
       ${productsClean.map(productTemplate).join('')}
     `
-  });
 
+    const swiperOuter = new Swiper('.swiper-outer', {
+      virtual: {
+        enabled: true,
+        addSlidesAfter: 1,
+      },
+      direction: 'horizontal',
+      spaceBetween: 12,
+    });
+
+    const swiperInner = new Swiper('.swiper-inner', {
+      virtual: {
+        enabled: true,
+        addSlidesAfter: 1,
+      },
+      direction: 'horizontal',
+      perSlideOffset: 8,
+      nested: true,
+      effect: 'cards',
+      rotate: false,
+      perSlideRotate: 1,
+      zoom: {
+        enabled: true,
+        toggle: true,
+        minRatio: 1,
+        maxRatio: 1
+      },
+    });
+  });
 </script>
 </body>
 </html>
