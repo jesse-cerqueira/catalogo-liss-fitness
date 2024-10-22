@@ -149,8 +149,6 @@
 
         productNew.color_variations.push(variationColor);
         productsClean.push(productNew);
-
-        // list.innerHTML += `<li>${productsClean[productsClean.length - 1].name}</li>`
       }
       else
       {
@@ -158,21 +156,23 @@
       }
     });
 
-    // function colorVarTemplate() {
-    //   productsClean.map(product => {
-    //     return
-    //   });
-    // }
-
-    function swatchesSize(swatches) {
+    function swatchesSize(arr) {
       return `
-        <div class="swatch-size">P</div>
+        <div class="wrapper-swatches-size">
+          ${arr.attributes[0].options.map((size) => {
+            return `<div class="swatch-size">${size}</div>`
+          }).join('')}
+        </div>
       `
     }
 
-    function swatchesColor(swatches) {
+    function swatchesColor(arr) {
       return `
-        <div class="swatch-color">Nome da cor 1</div>
+        <div class="wrapper-swatches-color">
+          ${arr.color_variations.map((color) => {
+            return `<div class="swatch-color"></div>`
+          }).join('')}
+        </div>
       `
     }
 
@@ -183,20 +183,15 @@
             <h2 class="h5">${product.name} <span class="variation-name">${product.color_variations[0].color_name}</span></h2>
           </header>
           <div class="product-prices">
-            <span class="product-price">R$ <span class="product-price-value">${product.price}</span></span>
-            <span class="product-price-details">no PIX, ou até 3× de R$ <span class="product-price-3x-value">${product.price * 1.1 / 3}</span></span>
+            <span class="product-price">R$ <span class="product-price-value">${Number(product.price).toFixed(2)}</span></span>
+            <span class="product-price-details">no PIX, ou até 3× de R$ <span class="product-price-3x-value">${Number(product.price * 1.1 / 3).toFixed(2)}</span></span>
           </div>
-          ${product.color_variations ? swatchesColor() : ''}
-          <div class="wrapper-swatches-size">
-            <div class="swatch-size">P</div>
-            <div class="swatch-size">M</div>
-            <div class="swatch-size">G</div>
-            <div class="swatch-size">GG</div>
-          </div>
+          ${product.color_variations ? swatchesColor(product) : ''}
+          ${product.attributes.find(obj => obj.name === 'TAMANHO') ? swatchesSize(product) : ''}
           <div class="swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="a" width="1600" height="1600" class="image-product" alt="" loading="lazy">
+                <img src="${product.color_variations?.[0]?.images?.[0]?.src}" width="1600" height="1600" class="image-product" alt="" loading="lazy">
               </div>
             </div>
           </div>
@@ -207,7 +202,7 @@
       `
     }
 
-    list.innerHTML =  `
+    list.innerHTML = `
       ${productsClean.map(productTemplate).join('')}
     `
   });
