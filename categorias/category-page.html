@@ -182,25 +182,16 @@
       ${productsClean.map(productTemplate).join('')}
     `
 
-    const swiperOuter = new Swiper('.swiper-outer', {
-      virtual: {
-        enabled: true,
-        addSlidesAfter: 1,
-      },
-      direction: 'horizontal',
-      spaceBetween: 12,
-    });
-
     const swiperInner = new Swiper('.swiper-inner', {
       virtual: {
         enabled: true,
         addSlidesAfter: 1,
       },
       direction: 'horizontal',
-      perSlideOffset: 8,
+      perSlideOffset: 0,
       nested: true,
       effect: 'cards',
-      rotate: false,
+      rotate: true,
       perSlideRotate: 1,
       zoom: {
         enabled: true,
@@ -208,6 +199,15 @@
         minRatio: 1,
         maxRatio: 1
       },
+    });
+
+    const swiperOuter = new Swiper('.swiper-outer', {
+      virtual: {
+        enabled: true,
+        addSlidesAfter: 1,
+      },
+      direction: 'horizontal',
+      spaceBetween: 20,
     });
   });
 </script>
