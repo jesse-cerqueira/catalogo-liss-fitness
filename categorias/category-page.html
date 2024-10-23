@@ -61,7 +61,7 @@
     // Gera uma lista "limpa" (productsClean) com os produtos recuperados e tratados
     products.forEach(product => {
       // -> extrair a string de cor do nome do produto,
-      product.color_variations = product.name.split(/\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm).pop();
+      product.color_variations = product.name.split(/\b(Compressão |Dryfit Grid |Dryfit |Jacquard Atol |Jacquard Boreal |Jacquard Chevry |Jacquard Felina |Jacquard Isla |Jacquard Ondinha |Jacquard Spot |Jacquard Zebra |Jacquard Zig |Suplex Poliamida | Trilobal |Tule |Print )\b/gm).pop();
 
       // -> extrair a informação de nome do produto até o nome do tecido, e gravar na variavel "name"
       let name = product.name.split(" " + product.color_variations).shift()
