@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Legging + Top Tamanho Único – Catálogo Liss Fitness</title>
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/category-page.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -106,8 +106,6 @@
       }
     });
 
-    // function swiperVariationImages(arr) {}
-
     function swiperVariations(arr) {
       return `
         ${arr.color_variations.map((variation) => {
@@ -119,7 +117,7 @@
                     return `
                       <div class="swiper-slide" data-slide-for-color="${variation.color_name}">
                         <div class="swiper-zoom-container">
-                          <img src="${ image.src }" width="1600" height="1600" class="image-product" alt="">
+                          <img src="${ image.src }" width="1600" height="1600" alt="${ image.alt }" class="image-product" loading="lazy">
                         </div>
                       </div>
                     `
@@ -172,7 +170,7 @@
             </div>
           </div>
           <div class="wrapper-actions">
-            <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name},%20a" target="blank">Comprar com atendente</a>
+            <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}%20${product.color_variations[0].color_name}" target="blank">Comprar com atendente</a>
           </div>
         </article>
       `
@@ -186,13 +184,14 @@
       virtual: {
         enabled: true,
         addSlidesAfter: 1,
+        addSlidesBefore: 1,
       },
       direction: 'horizontal',
-      perSlideOffset: 0,
+      perSlideOffset: 3,
       nested: true,
       effect: 'cards',
       rotate: true,
-      perSlideRotate: 1,
+      perSlideRotate: 90,
       zoom: {
         enabled: true,
         toggle: true,
