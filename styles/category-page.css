@@ -61,7 +61,7 @@ article {
 
       .swatch-color {
         position: relative;
-        background-color: #fff;
+        /* background-color: #fff; */
         width: 20px;
         height: 20px;
 
