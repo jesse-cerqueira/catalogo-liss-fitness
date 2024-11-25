@@ -63,7 +63,7 @@
     // Depende de receber os produtos em ordem alfabética para tratar os itens corretamente
     products.forEach(product => {
       // -> extrair a string de cor do nome do produto,
-      product.color_variations = product.name.split(/\b(Animal Print|Compressão|Dryfit Grid|Dryfit|Jacquard Atol|Jacquard Boreal|Jacquard Canelado|Jacquard Chevry|Jacquard Degradê|Jacquard Felina|Jacquard Isla|Jacquard Ondinha|Jacquard Vulcão|Jacquard Spot|Jacquard Zebra e Trilobal|Jacquard Zebra|Jacquard Zig|Suplex Poliamida|Trilobal|Tule)\b/m).pop().trim();
+      product.color_variations = product.name.split(/\b(Animal Print|Compressão e Suplex|Compressão|Dryfit Grid|Dryfit|Jacquard Atol|Jacquard Boreal|Jacquard Canelado|Jacquard Chevry|Jacquard Degradê|Jacquard Felina|Jacquard Isla|Jacquard Ondinha|Jacquard Vulcão|Jacquard Spot|Jacquard Zebra e Trilobal|Jacquard Zebra|Jacquard Zig|Suplex Poliamida|Trilobal|Tule)\b/m).pop().trim();
       
       // -> extrair a string do nome do produto até o nome do tecido, antes de " cor", e gravar a string reusltante na variavel "name"
       let name = product.name.split(" " + product.color_variations).shift()
