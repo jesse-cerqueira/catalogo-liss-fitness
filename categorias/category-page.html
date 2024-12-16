@@ -158,7 +158,7 @@
       return `
         <div class="wrapper-swatches-color">
           ${arr.color_variations.map((color) => {
-            return `<div class="swatch-color ${color.color_slug}"></div>`
+            return `<div class="swatch-color ${color.color_slug}" title="${color.color_name}"></div>`
           }).join('')}
         </div>
       `
