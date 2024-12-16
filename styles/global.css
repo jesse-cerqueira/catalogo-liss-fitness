@@ -150,6 +150,97 @@ ul {
 --vermelho: #FD394B ;	
 --vinho: #811E32 ;	
 --violeta: #6C41C8 ;
+--barbie: #f775a2;
+--amarelo-citrus: #d2dd5e;
+--marsala: #782031;
+--azul-petroleo:#2a2d74;
+--coral:#e27e80;
+--fluorescente:#d0e687;
+--mirtilo: #412952;
+--areia:#dbbab8;
+--bordo:#a2302f;
+--damasco:#f48e5f;
+--azul-oxford:#1e3459;
+--capuccino-e-silver: var(--capuccino);
+--roxo-claro:#dbc3cf;
+--amarelo-candy:#feeacd;
+--azul-candy:#b6dcfa;
+--ciano-candy:#d3feff;
+--lilas-candy:#dad3f3;
+--rosa-candy:#fbe5f1;
+--rose-candy:#e3ccc9;
+--verde-candy:#b3eedd;
+--cravo:#bb7651;
+--camel:#ca6c4d;
+--ametista:#942f89;
+--nimbus:#6f6479;
+--velvet:#8c3245;
+--rosa-licor:#cd8783;
+--malva:#9f7286;
+--verde-maca:#9ed786;
+--magenta:#f61241;
+--amarelo-e-azul-candy:var(--amarelo-candy);
+--azul-e-amarelo-candy:var(--azul-candy);
+--ciano-e-rosa-candy:var(--ciano-candy);
+--lilas-e-rose-candy:var(--lilas-candy);
+--rosa-e-azul-candy:var(--rosa-candy);
+--rosa-e-lilas-candy:var(--rosa-candy);
+--rose-e-verde-candy:var(--rose-candy);
+--verde-e-rose-candy:var(--verde-candy);
+--tyfany-escuro:#21aca0;
+--carmim:#813e60;
+--black:var(--preto);
+--azul-safira:#1865c3;
+--mirtilo-e-off-white:#46204d;
+--laranja-imperial:#f79076;
+--purpura:#c229df;
+--celeste:#adcae5;
+--rosa-persa:#fdafe0;
+--alecrim:#b6a965;
+--cereja-e-petala:var(--cereja);
+--chocolate-e-capuccino:var(--chocolate);
+--verde-militar-e-silver:var(--verde-militar);
+--cimento:#7798b3;
+--marinho:var(--azul-marinho);
+--papaia:#e68474;
+--verde-limon:#cfefc8;
+--verde-oliva:#9eaeaf;
+--vinho-e-creme: var(--vinho);
+--creme-e-capuccino: var(--creme);
+--grafite-e-creme: var(--grafite);
+--lilac-e-branco: var(--lilac);
+--verde-acqua:#a8e2e4;
+--chiclete:#e57faf;
+--verde-tiffany:#4f9fb0;
+--roxo:#9a1a84;
+--verde-mar:#65969b;
+--azul-cristal:#5d9cb2;
+--cacau:#6e4756;
+--caramelo:#d18969;
+--jade:#2bc2c9;
+--ambar:#fbb13e;
+--licor:#8e333d;
+--verde-siciliano:#e7e338;
+--verde-floresta:#418174;
+--marsala-e-barbie: var(--marsala);
+--terracota-e-off-white: var(--terracota);
+--uva-e-off-white: var(--uva);
+--verde-cha-e-off-white: var(--verde-cha);
+--vinho-e-rose-gold: var(--vinho);
+--branco-e-flamingo: var(--branco);
+--cereja-e-rose:var(--cereja);
+--grafite-e-off-white:var(--grafite);
+--preto-e-champanhe: var(--preto);
+--preto-e-off-white: var(--preto);
+--verde-militar-e-off-white: var(--verde-militar);
+--cereja-e-branco: var(--cereja);
+--terracota-e-branco: var(--terracota);
+--azul-indigo-e-off-white: var(--azul-indigo);
+--azul-petroleo-e-off-white: var(--azul-petroleo);
+--preto-e-cobre: var(--preto);
+--plomo:#4a3f3c;
+--fucsia-pink:#fb7df8;
+--rosa:#ef6d76;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -203,88 +294,181 @@ a {
 }
 
 .swatch-color {
-  &.acai                   { background: var(--acai) }
-  &.anil                   { background: var(--anil) }
-  &.azul-brim              { background: var(--azul-brim) }
-  &.azul-brim-e-off-white  { background: var(--azul-brim-e-off-white) }
-  &.azul-capri             { background: var(--azul-capri) }
-  &.azul-ceu               { background: var(--azul-ceu) }
-  &.azul-claro             { background: var(--azul-claro) }
-  &.azul-indigo            { background: var(--azul-indigo) }
-  &.azul-marinho           { background: var(--azul-marinho) }
-  &.blush                  { background: var(--blush) }
-  &.branco                 { background: var(--branco) }
-  &.branca                 { background: var(--branco) }
-  &.cafe                   { background: var(--cafe) }
-  &.canela                 { background: var(--canela) }
-  &.capuccino              { background: var(--capuccino) }
-  &.capuccino-e-creme      { background: var(--capuccino-e-creme) }
-  &.capuccino-e-off-white  { background: var(--capuccino-e-off-white) }
-  &.castanho               { background: var(--castanho) }
-  &.cereja                 { background: var(--cereja) }
-  &.cereja-e-off-white     { background: var(--cereja-e-off-white) }
-  &.champagne              { background: var(--champagne) }
-  &.chocolate              { background: var(--chocolate) }
-  &.chocolate-e-areia      { background: var(--chocolate-e-areia) }
-  &.chocolate-e-off-white  { background: var(--chocolate-e-off-white) }
-  &.ciano                  { background: var(--ciano) }
-  &.cobre                  { background: var(--cobre) }
-  &.cobre-e-off-white      { background: var(--cobre-e-off-white) }
-  &.creme                  { background: var(--creme) }
-  &.cristal                { background: var(--cristal) }
-  &.dourado                { background: var(--dourado) }
-  &.ebano                  { background: var(--ebano) }
-  &.escarlate              { background: var(--escarlate) }
-  &.esmeralda              { background: var(--esmeralda) }
-  &.flamingo               { background: var(--flamingo) }
-  &.flor-de-lis            { background: var(--flor-de-lis) }
-  &.fucsia                 { background: var(--fucsia) }
-  &.fucsia-e-rose-gold     { background: var(--fucsia-e-rose-gold) }
-  &.grafite                { background: var(--grafite) }
-  &.gris                   { background: var(--gris) }
-  &.iris                   { background: var(--iris) }
-  &.laranja                { background: var(--laranja) }
-  &.lavanda                { background: var(--lavanda) }
-  &.lilac                  { background: var(--lilac) }
-  &.lilac-e-off-white      { background: var(--lilac-e-off-white) }
-  &.marrom                 { background: var(--marrom) }
-  &.marrom-rosado          { background: var(--marrom-rosado) }
-  &.menta                  { background: var(--menta) }
-  &.mocha                  { background: var(--mocha) }
-  &.night-blue             { background: var(--night-blue) }
-  &.night-blue-e-off-white { background: var(--night-blue-e-off-white) }
-  &.nude                   { background: var(--nude) }
-  &.off-white              { background: var(--off-white) }
-  &.off-white-e-capuccino  { background: var(--off-white-e-capuccino) }
-  &.orange                 { background: var(--orange) }
-  &.penelope               { background: var(--penelope) }
-  &.petala                 { background: var(--petala) }
-  &.pink                   { background: var(--pink) }
-  &.pink-e-off-white       { background: var(--pink-e-off-white) }
-  &.preto                  { background: var(--preto) }
-  &.preto-e-capuccino      { background: var(--preto-e-capuccino) }
-  &.preto-e-silver         { background: var(--preto-e-silver) }
-  &.rosa-claro             { background: var(--rosa-claro) }
-  &.rosa-cristal           { background: var(--rosa-cristal) }
-  &.rosado                 { background: var(--rosado) }
-  &.rose                   { background: var(--rose) }
-  &.rose-gold              { background: var(--rose-gold) }
-  &.roseto                 { background: var(--roseto) }
-  &.rubi                   { background: var(--rubi) }
-  &.safira                 { background: var(--safira) }
-  &.silver                 { background: var(--silver) }
-  &.tangerina              { background: var(--tangerina) }
-  &.terracota              { background: var(--terracota) }
-  &.turquesa               { background: var(--turquesa) }
-  &.uva                    { background: var(--uva) }
-  &.uva-e-roxo-claro       { background: var(--uva-e-roxo-claro) }
-  &.verde-cha              { background: var(--verde-cha) }
-  &.verde-citrus           { background: var(--verde-citrus) }
-  &.verde-e-areia          { background: var(--verde-e-areia) }
-  &.verde-militar          { background: var(--verde-militar) }
-  &.verde-musgo            { background: var(--verde-musgo) }
-  &.verde-tropical         { background: var(--verde-tropical) }
-  &.vermelho               { background: var(--vermelho) }	
-  &.vinho                  { background: var(--vinho) }	
-  &.violeta                { background: var(--violeta) }
+  &.acai                     { background: var(--acai) }
+  &.anil                     { background: var(--anil) }
+  &.azul-brim                { background: var(--azul-brim) }
+  &.azul-brim-e-off-white    { background: var(--azul-brim-e-off-white) }
+  &.azul-capri               { background: var(--azul-capri) }
+  &.azul-ceu                 { background: var(--azul-ceu) }
+  &.azul-claro               { background: var(--azul-claro) }
+  &.azul-indigo              { background: var(--azul-indigo) }
+  &.azul-marinho             { background: var(--azul-marinho) }
+  &.blush                    { background: var(--blush) }
+  &.branco                   { background: var(--branco) }
+  &.branca                   { background: var(--branco) }
+  &.cafe                     {   background: var(--cafe) }
+  &.canela                   { background: var(--canela) }
+  &.capuccino                { background: var(--capuccino) }
+  &.capuccino-e-creme        { background: var(--capuccino-e-creme) }
+  &.capuccino-e-off-white    { background: var(--capuccino-e-off-white) }
+  &.castanho                 { background: var(--castanho) }
+  &.cereja                   { background: var(--cereja) }
+  &.cereja-e-off-white       { background: var(--cereja-e-off-white) }
+  &.champagne                { background: var(--champagne) }
+  &.chocolate                { background: var(--chocolate) }
+  &.chocolate-e-areia        { background: var(--chocolate-e-areia) }
+  &.chocolate-e-off-white    { background: var(--chocolate-e-off-white) }
+  &.ciano                    { background: var(--ciano) }
+  &.cobre                    { background: var(--cobre) }
+  &.cobre-e-off-white        { background: var(--cobre-e-off-white) }
+  &.creme                    { background: var(--creme) }
+  &.cristal                  { background: var(--cristal) }
+  &.dourado                  { background: var(--dourado) }
+  &.ebano                    { background: var(--ebano) }
+  &.escarlate                { background: var(--escarlate) }
+  &.esmeralda                { background: var(--esmeralda) }
+  &.flamingo                 { background: var(--flamingo) }
+  &.flor-de-lis              { background: var(--flor-de-lis) }
+  &.fucsia                   { background: var(--fucsia) }
+  &.fucsia-e-rose-gold       { background: var(--fucsia-e-rose-gold) }
+  &.grafite                  { background: var(--grafite) }
+  &.gris                     { background: var(--gris) }
+  &.iris                     { background: var(--iris) }
+  &.laranja                  { background: var(--laranja) }
+  &.lavanda                  { background: var(--lavanda) }
+  &.lilac                    { background: var(--lilac) }
+  &.lilac-e-off-white        { background: var(--lilac-e-off-white) }
+  &.marrom                   { background: var(--marrom) }
+  &.marrom-rosado            { background: var(--marrom-rosado) }
+  &.menta                    { background: var(--menta) }
+  &.mocha                    { background: var(--mocha) }
+  &.night-blue               { background: var(--night-blue) }
+  &.night-blue-e-off-white   { background: var(--night-blue-e-off-white) }
+  &.nude                     { background: var(--nude) }
+  &.off-white                { background: var(--off-white) }
+  &.off-white-e-capuccino    { background: var(--off-white-e-capuccino) }
+  &.orange                   { background: var(--orange) }
+  &.penelope                 { background: var(--penelope) }
+  &.petala                   { background: var(--petala) }
+  &.pink                     { background: var(--pink) }
+  &.pink-e-off-white         { background: var(--pink-e-off-white) }
+  &.preta                    { background: var(--preto)}
+  &.preto                    { background: var(--preto) }
+  &.preto-e-capuccino        { background: var(--preto-e-capuccino) }
+  &.preto-e-silver           { background: var(--preto-e-silver) }
+  &.rosa-claro               { background: var(--rosa-claro) }
+  &.rosa-cristal             { background: var(--rosa-cristal) }
+  &.rosado                   { background: var(--rosado) }
+  &.rose                     { background: var(--rose) }
+  &.rose-gold                { background: var(--rose-gold) }
+  &.roseto                   { background: var(--roseto) }
+  &.rubi                     { background: var(--rubi) }
+  &.safira                   { background: var(--safira) }
+  &.silver                   { background: var(--silver) }
+  &.tangerina                { background: var(--tangerina) }
+  &.terracota                { background: var(--terracota) }
+  &.turquesa                 { background: var(--turquesa) }
+  &.uva                      { background: var(--uva) }
+  &.uva-e-roxo-claro         { background: var(--uva-e-roxo-claro) }
+  &.verde-cha                { background: var(--verde-cha) }
+  &.verde-citrus             { background: var(--verde-citrus) }
+  &.verde-e-areia            { background: var(--verde-e-areia) }
+  &.verde-militar            { background: var(--verde-militar) }
+  &.verde-musgo              { background: var(--verde-musgo) }
+  &.verde-tropical           { background: var(--verde-tropical) }
+  &.vermelho                 { background: var(--vermelho) }	
+  &.vinho                    { background: var(--vinho) }	
+  &.violeta                  { background: var(--violeta) }
+  &.barbie                   { background: var(--barbie)}
+  &.amarelo-citrus           { background: var(--amarelo-citrus)}
+  &.marsala                  { background: var(--marsala)}
+  &.azul-petroleo            { background: var(--azul-petroleo)}
+  &.coral                    { background: var(--coral)}
+  &.fluorescente             { background: var(--fluorescente)}
+  &.mirtilo                  { background: var(--mirtilo) }
+  &.areia                    { background: var(--areia)}
+  &.bordo                    { background: var(--bordo)}
+  &.damasco                  { background: var(--damasco)}
+  &.azul-oxford              { background: var(--azul-oxford)}
+  &.capuccino-e-silver       { background: var(--capuccino-e-silver)}
+  &.roxo-claro               { background: var(--roxo-claro)}
+  &.amarelo-candy            { background: var(--amarelo-candy)}
+  &.azul-candy               { background: var(--azul-candy)}
+  &.ciano-candy              { background: var(--ciano-candy)}
+  &.lilas-candy              { background: var(--lilas-candy)}
+  &.rosa-candy               { background: var(--rosa-candy)}
+  &.rose-candy               { background: var(--rose-candy)}
+  &.verde-candy              { background: var(--verde-candy)}
+  &.cravo                    { background: var(--cravo)}
+  &.camel                    { background: var(--camel)}
+  &.ametista                 { background: var(--ametista)}
+  &.nimbus                   { background: var(--nimbus)}
+  &.velvet                   { background: var(--velvet)}
+  &.rosa-licor               { background: var(--rosa-licor)}
+  &.malva                    { background: var(--malva)}
+  &.verde-maca               { background: var(--verde-maca)}
+  &.magenta                  { background: var(--magenta)}
+  &.amarelo-e-azul-candy     { background: var(--amarelo-e-azul-candy)}
+  &.azul-e-amarelo-candy     { background: var(--azul-e-amarelo-candy)}
+  &.ciano-e-rosa-candy       { background: var(--ciano-e-rosa-candy)}
+  &.lilas-e-rose-candy       { background: var(--lilas-e-rose-candy)}
+  &.rosa-e-azul-candy        { background: var(--rosa-e-azul-candy)}
+  &.rosa-e-lilas-candy       { background: var(--rosa-e-lilas-candy)}
+  &.rose-e-verde-candy       { background: var(--rose-e-verde-candy)}
+  &.verde-e-rose-candy       { background: var(--verde-e-rose-candy)}
+  &.tyfany-escuro            { background: var(--tyfany-escuro)}
+  &.carmim                   { background: var(--carmim)}
+  &.black                    { background: var(--black)}
+  &.azul-safira              { background: var(--azul-safira)}
+  &.mirtilo-e-off-white      { background: var(--mirtilo-e-off-white)}
+  &.laranja-imperial         { background: var(--laranja-imperial)}
+  &.purpura                  { background: var(--purpura)}
+  &.celeste                  { background: var(--celeste)}
+  &.rosa-persa               { background: var(--rosa-persa)}
+  &.alecrim                  { background: var(--alecrim)}
+  &.cereja-e-petala          { background: var(--cereja-e-petala)}
+  &.chocolate-e-capuccino    { background: var(--chocolate-e-capuccino)}
+  &.verde-militar-e-silver   { background: var(--verde-militar-e-silver)}
+  &.cimento                  { background: var(--cimento)}
+  &.marinho                  { background: var(--marinho)}
+  &.papaia                   { background: var(--papaia)}
+  &.verde-limon              { background: var(--verde-limon)}
+  &.verde-oliva              { background: var(--verde-oliva)}
+  &.vinho-e-creme            { background: var(--vinho-e-creme)}
+  &.branco-e-flamingo        { background: var(--branco-e-flamingo)}
+  &.creme-e-capuccino        { background: var(--creme-e-capuccino)}
+  &.grafite-e-creme          { background: var(--grafite-e-creme)}
+  &.lilac-e-branco           { background: var(--lilac-e-branco)}
+  &.verde-acqua              { background: var(--verde-acqua)}
+  &.chiclete                 { background: var(--chiclete);}
+  &.verde-tiffany            { background: var(--verde-tiffany);}
+  &.roxo                     { background: var(--roxo);}
+  &.verde-mar                { background: var(--verde-mar);}
+  &.azul-cristal             { background: var(--azul-cristal);}
+  &.cacau                    { background: var(--cacau);}
+  &.caramelo                 { background: var(--caramelo);}
+  &.jade                     { background: var(--jade);}
+  &.ambar                    { background: var(--ambar);}
+  &.licor                    { background: var(--licor);}
+  &.verde-siciliano          { background: var(--verde-siciliano);}
+  &.verde-floresta           { background: var(--verde-floresta);}
+  &.marsala-e-barbie         { background: var(--marsala-e-barbie);}
+  &.terracota-e-off-white    { background: var(--terracota-e-off-white);}
+  &.uva-e-off-white          { background: var(--uva-e-off-white);}
+  &.verde-cha-e-off-white    { background: var(--verde-cha-e-off-white);}
+  &.vinho-e-rose-gold        { background: var(--vinho-e-rose-gold);}
+  &.branco-e-flamingo        { background: var(--branco-e-flamingo);} 
+  &.cereja-e-rose            { background: var(--cereja-e-rose);} 
+  &.grafite-e-off-white      { background: var(--grafite-e-off-white);} 
+  &.preto-e-champagne        { background: var(--preto-e-champanhe);} 
+  &.preto-e-off-white        { background: var(--preto-e-off-white);} 
+  &.verde-militar-e-off-white{ background: var(--verde-militar-e-off-white);} 
+  &.cereja-e-branco          { background: var(--cereja-e-branco);} 
+  &.terracota-e-branco       { background: var(--terracota-e-branco);} 
+  &.azul-indigo-e-off-white  { background: var(--azul-indigo-e-off-white);} 
+  &.azul-petroleo-e-off-white{ background: var(--azul-petroleo-e-off-white);} 
+  &.preto-e-cobre            { background: var(--preto-e-cobre);} 
+  &.plomo                    { background: var(--plomo);} 
+  &.fucsia-pink              { background: var(--fucsia-pink) ;} 
+  &.rosa                     { background: var(--rosa);}
 }
