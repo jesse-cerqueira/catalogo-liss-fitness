@@ -41,12 +41,10 @@
 
       console.log(`Fetching page: ${page}`);
 
-      const responseProducts = await fetch(apiEndpoint)
-        .then((x) => x.json())
-        .catch((e) => {
-          console.error(e); // error handling
-          return []; //returns no-results
-        });
+      const responseProducts = await fetch(apiEndpoint).then((x) => x.json()).catch((e) => {
+        console.error(e); // error handling
+        return []; //returns no-results
+      });
 
       console.log(`Fetched ${responseProducts.length} ${responseProducts.length !== 1 ? "items" : "item"} on page ${page}`);
 
@@ -75,12 +73,7 @@
 
         let variationColor = {
           color_name: product.color_variations,
-          color_slug: product.color_variations
-            .split(" ")
-            .join("-")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase(),
+          color_slug: product.color_variations.split(" ").join("-").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(),
           images: product.images,
           slug: product.slug,
           permalink: product.permalink,
