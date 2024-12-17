@@ -37,7 +37,7 @@
     let colorsClean = []; //armazenará o array com cores
 
     async function fetchProducts(page = 1, dataProducts = [], category = "") {
-      const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title${category ? "&category=" + category : "" }${category}&order=asc&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
+      const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title${category ? "&category=" + category : "" }&order=asc&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
 
       console.log(`Fetching page: ${page}`);
 
