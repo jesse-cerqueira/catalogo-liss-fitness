@@ -54,11 +54,11 @@
       let colorsClean = []; //armazenará o array com cores
 
       async function fetchProducts(page = 1, dataProducts = [], category = "") {
-        const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title${
+        const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title&order=asc&stock_status=instock${
           category ? "&category=" + category : ""
         }${category}&order=asc&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
 
-        console.log(`Fetching page: ${page}`);
+        console.log(`Fetching page: ${page}`); 
 
         const responseProducts = await fetch(apiEndpoint)
           .then((x) => x.json())
@@ -249,7 +249,7 @@
           }" target="blank">Comprar com atendente</a>
             </div>
           </article>
-        `;
+          `;
         }
 
         list.innerHTML = `
@@ -284,7 +284,6 @@
           direction: "horizontal",
           spaceBetween: 20,
         });
-
         const artigo = Array.from(document.querySelectorAll("article"));
         artigo.forEach((div) => {
           const SwipeOutElement = div.querySelector(".swiper-outer");
@@ -292,16 +291,17 @@
           const arrySwatchColor = Array.from(
             div.getElementsByClassName("swatch-color")
           );
+
           arrySwatchColor.forEach((color) => {
             color.addEventListener("click", function () {
-              console.log("out", SwipeOut);
-              console.log("");
-              console.log(arrySwatchColor.indexOf(color));
               ind = arrySwatchColor.indexOf(color);
+              const colorVar = div.querySelector('.variation-name')
+//            colorVar.innerHTML = product.color_variations[ind].color_name
               SwipeOut.slideTo(ind, 0);
+              
             });
           });
-        });
+        }); 
       });
     </script>
   </body>
