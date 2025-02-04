@@ -38,6 +38,7 @@ article {
         }
       }
     }
+
     .product-prices {
       line-height: 1;
       font-size: .875rem;
@@ -54,8 +55,13 @@ article {
       }
     }
 
+    .sku {
+      opacity: 0.5;
+    }
+
     .wrapper-swatches-color {
       display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 12px;
 

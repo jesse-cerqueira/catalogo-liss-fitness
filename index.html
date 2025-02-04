@@ -67,9 +67,11 @@
         #novidades {
           min-width: 353px;
           min-height: 250px;
+          display: flex;
+          flex-direction: column-reverse;
+          align-items: center;
 
           a {
-            position: absolute;
             bottom: 0px;
             background-color: #81209e;
             color: white;
@@ -83,25 +85,14 @@
   </head>
   <body>
     <div id="intro">
-      <img src="https://placehold.jp/393x218.png" alt="CATALOGO LISS FITNESS" />
+      <img id="logo" src="./img/Prancheta 7.png" alt="CATALOGO LISS FITNESS" height="250"/>
       <div
         id="novidades"
-        style="background-image: url('https://placehold.jp/353x250.png')"
+        style="background-image: url('./img/teste1.png')"
       >
-        <a href="./categorias/category-page.html">
-          Ver Novidades
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            />
+        <a href="./categorias/newer.html">
+          Ver Novidades →
+
           </svg>
         </a>
       </div>
@@ -111,120 +102,63 @@
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
         <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <a id='leg+Tu' href="./categorias/legTu.html"
+          >Ver produtos →</a>
       </li>
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <p>Legging + Top Tamanho Plus</p>
+        <a id='leg+Tp' href="./categorias/legTp.html"
+          >Ver produtos →</a>
       </li>
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <p>Short + Top Tamanho Unico</p>
+        <a id='sho+Tu' href="./categorias/shoTu.html"
+          >Ver produtos →</a>
       </li>
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <p>Short + Top Tamanho Plus</p>
+        <a id='sho+Tp' href="./categorias/shoTp.html"
+        >Ver produtos →</a>
       </li>
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <p>Macacao Único</p>
+        <a id='mac+tu' href="./categorias/macTu.html"
+          >Ver produtos →</a>
       </li>
       <li>
         <img src="https://placehold.jp/168x160.png" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/category-page.html"
-          >Ver produtos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-            /></svg
-        ></a>
+        <p>Macacao Plus</p>
+        <a id='mac+tp' href="./categorias/macTp.html"
+          >Ver produtos →</a>
       </li>
     </ul>
 
     <script>
+      function tu(){
+        unico = true
+      }
+
+      function tp(){
+        plus = true
+      }
+
+      function lcl(){
+        legging = true
+      }
+
+      function scl(){
+        short = true
+      }
+
+      function mac(){
+        macacao = true
+      }
+
+
       let productsClean = []; //armazenará o array com produtos >tratados<
 
       async function fetchProducts(page = 1, dataProducts = []) {

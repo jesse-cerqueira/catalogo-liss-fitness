@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legging + Top Tamanho Único – Catálogo Liss Fitness</title>
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/category-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../script.js"></script>
+  </head>
+
+  <body>
+    <header class="title-bar">
+      <a href="../index.html">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.5 19.5L3 12M3 12L10.5 4.5M3 12H21"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+      <h1 class="h5">Legging + Top Tamanho Único</h1>
+    </header>
+
+    <ul
+      id="list-products"
+      style="max-width: 500px; margin: 0 auto; overflow: hidden"
+    ></ul>
+
+    <script>
+      let whatsappNumber = "999498626";
+      let list = document.getElementById("list-products");
+      let productsClean = []; //armazenará o array com produtos >tratados<
+      let colorsClean = []; //armazenará o array com cores
+
+      // Filtros para cada escolha
+      let filter = {
+        shortOn  : false,
+        leggingOn: true,
+        macacaoOn: false,
+        blusaOn  : false,
+        plusOn   : false,
+        unicoOn  : true
+      }
+
+      const skuList = {
+        legging : ['LBO','LCA','LCL','LCO','LCZ','LDU','LEM','LFA','LLA','LLO','LMO','LRE','LSL','LTR'],
+        short   : ['SCL','SBO','SML','SCA','SCL','SCO','SCR','SCZ','SFA','SJE','SLY','SOR','SRE','SSA','SSM','SSN','SDU'],
+        macacao : ['MAC','MAQ'],
+        blusa   : ['BLU','BLO','CRO','REG','RFC','RCC','BLB']
+      }
+    </script>
+  </body>
+</html>
