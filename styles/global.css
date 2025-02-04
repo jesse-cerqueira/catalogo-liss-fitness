@@ -344,7 +344,7 @@ a {
   &.mocha                    { background: var(--mocha) }
   &.night-blue               { background: var(--night-blue) }
   &.night-blue-e-off-white   { background: var(--night-blue-e-off-white) }
-  &.nude                     { background: var(--nude) }
+  &.nude                     { background: var(--rose-gold) }
   &.off-white                { background: var(--off-white) }
   &.off-white-e-capuccino    { background: var(--off-white-e-capuccino) }
   &.orange                   { background: var(--orange) }
