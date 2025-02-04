@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!--jesse nao sabe codar-->
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legging + Top Tamanho Único – Catálogo Liss Fitness</title>
+    <title>Novidades! – Catálogo Liss Fitness</title>
     <link rel="stylesheet" href="../styles/global.css" />
     <link rel="stylesheet" href="../styles/category-page.css" />
     <link
@@ -19,6 +18,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
+    <!--
+      <script src="../script.js"></script>
+      -->
   </head>
 
   <body>
@@ -40,7 +42,7 @@
           />
         </svg>
       </a>
-      <h1 class="h5">Legging + Top Tamanho Único</h1>
+      <h1 class="h5">Novidades!</h1>
     </header>
 
     <ul
@@ -54,46 +56,41 @@
       let productsClean = []; //armazenará o array com produtos >tratados<
       let colorsClean = []; //armazenará o array com cores
 
-      async function fetchProducts(page = 1, dataProducts = [], category = "") {
-        const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title${
-          category ? "&category=" + category : ""
-        }${category}&order=asc&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
+      // Filtros para cada escolha
 
-        console.log(`Fetching page: ${page}`);
+      async function fetchProducts(products = []) {
+        const apiEndpoint = `https://script.google.com/macros/s/AKfycbwpV2W1VNfAJZH9D_UOIoH32aqvihQHP7Q3cDT8ePXdCAC9hdfDyuPW71qH39xn0Ie1/exec`;
 
         const responseProducts = await fetch(apiEndpoint)
-          .then((x) => x.json())
-          .catch((e) => {
-            console.error(e); // error handling
-            return []; //returns no-results
-          });
-
+        .then((x) => x.json())
+        .catch((e) => {
+          console.error(e); // error handling
+          return []; //returns no-results
+        });
         console.log(
           `Fetched ${responseProducts.length} ${
             responseProducts.length !== 1 ? "items" : "item"
-          } on page ${page}`
-        );
-
+            }`
+          );
+          
         responseProducts.forEach((product) => {
-          dataProducts.push(product);
+          if(product.NOVIDADE == true){
+            products.push(product);
+          }
         });
-
-        page++;
-
-        if (responseProducts.length >= 100)
-          return fetchProducts(page, dataProducts);
-        else return dataProducts;
+        return products
       }
-
       // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
       fetchProducts().then((products) => {
+        console.log('products: ',products)
+
         let listIteration = []; // Lista que irá guardar todos os nomes únicos de produtos (sem a cor) já processados
 
         // Gera uma lista "limpa" (productsClean) com os produtos recuperados e tratados
         // Depende de receber os produtos em ordem alfabética para tratar os itens corretamente
         products.forEach((product) => {
           // -> extrair a string de cor do nome do produto,
-          product.color_variations = product.name
+          product.color_variations = product.NOME
             .split(
               /\b(Animal Print|Compressão e Suplex|Compressão|Dryfit Grid|Dryfit|Jacquard Atol|Jacquard Boreal|Jacquard Canelado|Jacquard Chevry|Jacquard Degradê|Jacquard Felina|Jacquard Isla|Jacquard Ondinha|Jacquard Vulcão|Jacquard Spot|Jacquard Zebra e Trilobal|Jacquard Zebra|Jacquard Zig|Suplex Poliamida|Trilobal|Tule)\b/m
             )
@@ -101,7 +98,7 @@
             .trim();
 
           // -> extrair a string do nome do produto até o nome do tecido, antes de " cor", e gravar a string reusltante na variavel "name"
-          let name = product.name.split(" " + product.color_variations).shift();
+          let name = product.NOME.split(" " + product.color_variations).shift();
 
           let variationColor = {
             color_name: product.color_variations,
@@ -111,26 +108,26 @@
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
               .toLowerCase(),
-            images: product.images,
-            slug: product.slug,
-            permalink: product.permalink,
+            images: product.IMG,
+            //slug: product.slug,
+            //permalink: product.permalink,
             // 'date_created': product.date_created,
           };
 
           let productNew = {
-            id: product.id,
+            id: product.ID,
             name: name,
-            status: product.status,
-            sku: product.sku,
-            price: product.price,
-            price_sale: product.price_sale,
-            price_interest: product.price_interest,
-            price_interest_sale: product.price_interest_sale,
-            on_sale: product.on_sale,
+            status: product.ESTOQUE,
+            sku: product.SKU,
+            price: (product.PREÇO * 0.9090909090909),
+            //price_sale: product.price_sale,
+            //price_interest: product.price_interest,
+            //price_interest_sale: product.price_interest_sale,
+            //on_sale: product.on_sale,
             // 'stock_status': product.stock_status,
-            categories: product.categories,
-            images: product.images,
-            attributes: product.attributes,
+            //categories: product.categories,
+            images: product.IMG,
+            //attributes: product.attributes,
             color_variations: [],
           };
 
@@ -160,7 +157,7 @@
               return `
               <div class="swiper-slide" data-slide-for-color="${arr.color_name}">
                 <div class="swiper-zoom-container">
-                  <img src="${image.src}" width="1600" height="1600" alt="${image.alt}" class="image-product" loading="lazy">
+                  <img src="${image}" width="1600" height="1600" alt="${image.alt}" class="image-product" loading="lazy">
                 </div>
               </div>
             `;
@@ -217,9 +214,7 @@
           return `
           <article id="${product.name}" class="wrapper-product">
             <header>
-              <h2 class="h5">${product.name} <span class="variation-name">${
-            product.color_variations[0].color_name
-          }</span></h2>
+              <h2 class="h5">${product.name}</h2>
             </header>
             <div class="product-prices">
               <span class="product-price">R$ <span class="product-price-value">${Number(
@@ -230,17 +225,23 @@
               ).toFixed(2)}</span></span>
             </div>
             ${product.color_variations ? swatchesColor(product) : ""}
-            ${
+            
+            
+            <!--  tamanho 
+            $
+            {
               product.attributes.find((obj) => obj.name === "TAMANHO")
                 ? swatchesSize(product)
                 : ""
             }
-            <div class="wrapper-sliders-swiper">
-              <div class="swiper swiper-outer" data-slide-for="${product.name}">
-                <div class="swiper-wrapper">
-                  ${swiperVariations(product)}
-                </div>
-              </div>
+            -->
+            
+              <div class="wrapper-sliders-swiper">
+                <div class="swiper swiper-outer" data-slide-for="${product.name}">
+                  <div class="swiper-wrapper">
+                    ${swiperVariations(product)}
+                    </div>
+                    </div>
             </div>
             <div class="wrapper-actions">
               <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${
@@ -250,7 +251,7 @@
           }" target="blank">Comprar com atendente</a>
             </div>
           </article>
-        `;
+          `;
         }
 
         list.innerHTML = `
@@ -285,7 +286,6 @@
           direction: "horizontal",
           spaceBetween: 20,
         });
-
         const artigo = Array.from(document.querySelectorAll("article"));
         artigo.forEach((div) => {
           const SwipeOutElement = div.querySelector(".swiper-outer");
@@ -293,16 +293,17 @@
           const arrySwatchColor = Array.from(
             div.getElementsByClassName("swatch-color")
           );
+
           arrySwatchColor.forEach((color) => {
             color.addEventListener("click", function () {
-              console.log("out", SwipeOut);
-              console.log("");
-              console.log(arrySwatchColor.indexOf(color));
               ind = arrySwatchColor.indexOf(color);
+              const colorVar = div.querySelector('.variation-name')
+//            colorVar.innerHTML = product.color_variations[ind].color_name
               SwipeOut.slideTo(ind, 0);
+              
             });
           });
-        });
+        }); 
       });
     </script>
   </body>
