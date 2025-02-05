@@ -1,17 +1,11 @@
-async function fetchProducts(products = []) {
-  const apiEndpoint = `https://script.google.com/macros/s/AKfycbwpV2W1VNfAJZH9D_UOIoH32aqvihQHP7Q3cDT8ePXdCAC9hdfDyuPW71qH39xn0Ie1/exec`;
+let responseProducts = JSON.parse(sessionStorage.getItem('allProducts'))
+let filter = JSON.parse(sessionStorage.getItem('filter'))
+let products = []
+let productsClean = []
+let whatsappNumber = "999498626";
+let colorsClean = [];
 
-  const responseProducts = await fetch(apiEndpoint)
-    .then((x) => x.json())
-    .catch((e) => {
-      console.error(e); // error handling
-      return []; //returns no-results
-    });
-  console.log(
-    `Fetched ${responseProducts.length} ${responseProducts.length !== 1 ? "items" : "item"
-    }`
-  );
-
+function filterProducts() {
 
   const skuList = {
     legging: ['LBO', 'LCA', 'LCL', 'LCO', 'LCZ', 'LDU', 'LEM', 'LFA', 'LLA', 'LLO', 'LMO', 'LRE', 'LSL', 'LTR'],
@@ -50,9 +44,10 @@ async function fetchProducts(products = []) {
   return products
 }
 
+
 // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
-fetchProducts().then((products) => {
-  console.log('products: ', products)
+function arrangeList() {
+  filterProducts()
 
   let listIteration = []; // Lista que irá guardar todos os nomes únicos de produtos (sem a cor) já processados
 
@@ -226,10 +221,10 @@ fetchProducts().then((products) => {
       `;
   }
 
+  let list = document.getElementById("list-products")
   list.innerHTML = `
-    ${productsClean.map(productTemplate).join("")}
-  `;
-
+      ${productsClean.map(productTemplate).join("")}
+    `;
   const swiperInner = new Swiper(".swiper-inner", {
     virtual: {
       enabled: true,
@@ -276,4 +271,5 @@ fetchProducts().then((products) => {
       });
     });
   });
-});
+};
+arrangeList()

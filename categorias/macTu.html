@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <script src="../script.js"></script>
+
   </head>
 
   <body>
@@ -49,13 +49,9 @@
     ></ul>
 
     <script>
-      let whatsappNumber = "999498626";
-      let list = document.getElementById("list-products");
-      let productsClean = []; //armazenará o array com produtos >tratados<
-      let colorsClean = []; //armazenará o array com cores
 
       // Filtros para cada escolha
-      let filter = {
+      let filterRaw = {
         shortOn  : false,
         leggingOn: false,
         macacaoOn: true,
@@ -63,13 +59,8 @@
         plusOn   : false,
         unicoOn  : true
       }
-
-      const skuList = {
-        legging : ['LBO','LCA','LCL','LCO','LCZ','LDU','LEM','LFA','LLA','LLO','LMO','LRE','LSL','LTR'],
-        short   : ['SCL','SBO','SML','SCA','SCL','SCO','SCR','SCZ','SFA','SJE','SLY','SOR','SRE','SSA','SSM','SSN','SDU'],
-        macacao : ['MAC','MAQ'],
-        blusa   : ['BLU','BLO','CRO','REG','RFC','RCC','BLB']
-      }
+      sessionStorage.setItem('filter',JSON.stringify(filterRaw))
     </script>
+    <script src="../script.js"></script>
   </body>
 </html>

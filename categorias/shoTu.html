@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <script src="../script.js"></script>
+
   </head>
 
   <body>
@@ -49,13 +49,7 @@
     ></ul>
 
     <script>
-      let whatsappNumber = "999498626";
-      let list = document.getElementById("list-products");
-      let productsClean = []; //armazenará o array com produtos >tratados<
-      let colorsClean = []; //armazenará o array com cores
-
-      // Filtros para cada escolha
-      let filter = {
+      let filterRaw = {
         shortOn  : true,
         leggingOn: false,
         macacaoOn: false,
@@ -63,6 +57,8 @@
         plusOn   : false,
         unicoOn  : true
       }
-    </script>
+      sessionStorage.setItem('filter',JSON.stringify(filterRaw))
+      </script>
+      <script src="../script.js"></script>
   </body>
 </html>
