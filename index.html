@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/category-page.css" />
     <script>
+      const loaded = document.getElementsByClassName('loaded')
+      const loader = document.getElementsByClassName('loader')
+      function load(){
+          loaded[0].classList.toggle('hidden')
+          loader[0].classList.toggle('hidden')
+      }
+
+      window.addEventListener('DOMContentLoaded', function (){
+        load()
+      })
+
       async function fetchProducts() {
         const apiEndpoint = `https://script.google.com/macros/s/AKfycbyOIoDG-vn2lDNgsvUxvzFhpqfGXLDQEWTUVrQBlqOJO5wyrmKoLukNKPJXozdzxZyN/exec`;
       
@@ -26,8 +37,10 @@
           });
         sessionStorage.setItem('allProducts', JSON.stringify(responseProducts))
         console.log('All Products Storaged', sessionStorage.getItem('allProducts'))
+        load()
       }
       fetchProducts()
+
     </script>
     <style>
       ul {
@@ -93,60 +106,67 @@
           }
         }
       }
+      .hidden{
+        display: none !important;
+      }
+
     </style>
   </head>
   <body>
-    <div id="intro">
-      <img id="logo" src="./img/logo.jpg" alt="CATALOGO LISS FITNESS" height="250"/>
-      <div
-        id="novidades"
-        style="background-image: url('./img/teste1.png')"
-      >
-        <a href="./categorias/newer.html">
-          Ver Novidades →
+    <section class="loader hidden"><img src="./img/loading.gif" alt="carregamento"></section>
+    <section class="loaded">
+      <div id="intro">
+        <img id="logo" src="./img/logo.jpg" alt="CATALOGO LISS FITNESS" height="250"/>
+        <div
+          id="novidades"
+          style="background-image: url('./img/teste1.png')"
+        >
+          <a href="./categorias/newer.html">
+            Ver Novidades →
 
-          </svg>
-        </a>
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
-    <h2>Navegue pelas categorias</h2>
-    <ul class="list-products">
-      <li>
-        <img src="./img/Legging Unico.jpg" alt="" />
-        <p>Legging + Top Tamanho Unico</p>
-        <a href="./categorias/legTu.html"
+      <h2>Navegue pelas categorias</h2>
+      <ul class="list-products">
+        <li>
+          <img src="./img/Legging Unico.jpg" alt="" />
+          <p>Legging + Top Tamanho Unico</p>
+          <a href="./categorias/legTu.html"
+            >Ver produtos →</a>
+        </li>
+        <li>
+          <img src="./img/Legging Plus.jpg" alt="" />
+          <p>Legging + Top Tamanho Plus</p>
+          <a href="./categorias/legTp.html"
+            >Ver produtos →</a>
+        </li>
+        <li>
+          <img src="./img/Short Unico.jpg" alt="" />
+          <p>Short + Top Tamanho Unico</p>
+          <a href="./categorias/shoTu.html"
+            >Ver produtos →</a>
+        </li>
+        <li>
+          <img src="./img/Short Plus.jpg" alt="" />
+          <p>Short + Top Tamanho Plus</p>
+          <a href="./categorias/shoTp.html"
           >Ver produtos →</a>
-      </li>
-      <li>
-        <img src="./img/Legging Plus.jpg" alt="" />
-        <p>Legging + Top Tamanho Plus</p>
-        <a href="./categorias/legTp.html"
-          >Ver produtos →</a>
-      </li>
-      <li>
-        <img src="./img/Short Unico.jpg" alt="" />
-        <p>Short + Top Tamanho Unico</p>
-        <a href="./categorias/shoTu.html"
-          >Ver produtos →</a>
-      </li>
-      <li>
-        <img src="./img/Short Plus.jpg" alt="" />
-        <p>Short + Top Tamanho Plus</p>
-        <a href="./categorias/shoTp.html"
-        >Ver produtos →</a>
-      </li>
-      <li>
-        <img src="./img/Macacao Unico.jpg" alt="" />
-        <p>Macacao Único</p>
-        <a href="./categorias/macTu.html"
-          >Ver produtos →</a>
-      </li>
-      <li>
-        <img src="./img/Macacao Plus.jpg" alt="" />
-        <p>Macacao Plus</p>
-        <a href="./categorias/macTp.html"
-          >Ver produtos →</a>
-      </li>
-    </ul>
+        </li>
+        <li>
+          <img src="./img/Macacao Unico.jpg" alt="" />
+          <p>Macacao Único</p>
+          <a href="./categorias/macTu.html"
+            >Ver produtos →</a>
+        </li>
+        <li>
+          <img src="./img/Macacao Plus.jpg" alt="" />
+          <p>Macacao Plus</p>
+          <a href="./categorias/macTp.html"
+            >Ver produtos →</a>
+        </li>
+      </ul>
+    </section>
   </body>
 </html>
