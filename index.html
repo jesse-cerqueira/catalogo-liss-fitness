@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/category-page.css" />
     <script>
+      const loaded = document.getElementsByClassName('loaded')
+      const loader = document.getElementsByClassName('loader')
+      function load(){
+          loaded[0].classList.toggle('hidden')
+          loader[0].classList.toggle('hidden')
+      }
+
+      window.addEventListener('DOMContentLoaded', function (){
+        load()
+      })
+
       async function fetchProducts() {
         const apiEndpoint = `https://script.google.com/macros/s/AKfycbyOIoDG-vn2lDNgsvUxvzFhpqfGXLDQEWTUVrQBlqOJO5wyrmKoLukNKPJXozdzxZyN/exec`;
       
@@ -26,8 +37,10 @@
           });
         sessionStorage.setItem('allProducts', JSON.stringify(responseProducts))
         console.log('All Products Storaged', sessionStorage.getItem('allProducts'))
+        load()
       }
       fetchProducts()
+
     </script>
     <style>
       .intro {
