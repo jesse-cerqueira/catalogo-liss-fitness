@@ -277,7 +277,6 @@ a {
     display: block;
     width: fit-content;
     font-size: 1rem;
-    margin: 0 auto;
     text-decoration: none;
     color: #fff;
     background-color: #1F141A;
@@ -291,6 +290,11 @@ a {
       background-color: #BF208F;
     }
   }
+}
+
+.wrapper-body {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .swatch-color {
