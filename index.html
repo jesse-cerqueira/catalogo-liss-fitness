@@ -88,9 +88,12 @@
       }
 
       .h6 { margin-bottom: 1.25rem; }
+      
+      .loader, .loaded { transition: opacity .2s ease-in-out; }
 
       .hidden{
-        display: none !important;
+        pointer-events: none;
+        opacity: 0;
       }
 
       .loader {
@@ -102,7 +105,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        pointer-events: none;
       }
     </style>
   </head>
