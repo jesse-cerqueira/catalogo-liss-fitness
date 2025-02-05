@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <script src="createList.js" type="text/javascript"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +14,21 @@
 
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/category-page.css" />
-
+    <script>
+      async function fetchProducts() {
+        const apiEndpoint = `https://script.google.com/macros/s/AKfycbyOIoDG-vn2lDNgsvUxvzFhpqfGXLDQEWTUVrQBlqOJO5wyrmKoLukNKPJXozdzxZyN/exec`;
+      
+        const responseProducts = await fetch(apiEndpoint)
+          .then((x) => x.json())
+          .catch((e) => {
+            console.error(e); // error handling
+            return []; //returns no-results
+          });
+        sessionStorage.setItem('allProducts', JSON.stringify(responseProducts))
+        console.log('All Products Storaged', sessionStorage.getItem('allProducts'))
+      }
+      fetchProducts()
+    </script>
     <style>
       ul {
         padding: 0;
@@ -85,7 +97,7 @@
   </head>
   <body>
     <div id="intro">
-      <img id="logo" src="./img/Prancheta 7.png" alt="CATALOGO LISS FITNESS" height="250"/>
+      <img id="logo" src="./img/logo.jpg" alt="CATALOGO LISS FITNESS" height="250"/>
       <div
         id="novidades"
         style="background-image: url('./img/teste1.png')"
@@ -100,150 +112,41 @@
     <h2>Navegue pelas categorias</h2>
     <ul class="list-products">
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Legging Unico.jpg" alt="" />
         <p>Legging + Top Tamanho Unico</p>
-        <a id='leg+Tu' href="./categorias/legTu.html"
+        <a href="./categorias/legTu.html"
           >Ver produtos →</a>
       </li>
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Legging Plus.jpg" alt="" />
         <p>Legging + Top Tamanho Plus</p>
-        <a id='leg+Tp' href="./categorias/legTp.html"
+        <a href="./categorias/legTp.html"
           >Ver produtos →</a>
       </li>
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Short Unico.jpg" alt="" />
         <p>Short + Top Tamanho Unico</p>
-        <a id='sho+Tu' href="./categorias/shoTu.html"
+        <a href="./categorias/shoTu.html"
           >Ver produtos →</a>
       </li>
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Short Plus.jpg" alt="" />
         <p>Short + Top Tamanho Plus</p>
-        <a id='sho+Tp' href="./categorias/shoTp.html"
+        <a href="./categorias/shoTp.html"
         >Ver produtos →</a>
       </li>
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Macacao Unico.jpg" alt="" />
         <p>Macacao Único</p>
-        <a id='mac+tu' href="./categorias/macTu.html"
+        <a href="./categorias/macTu.html"
           >Ver produtos →</a>
       </li>
       <li>
-        <img src="https://placehold.jp/168x160.png" alt="" />
+        <img src="./img/Macacao Plus.jpg" alt="" />
         <p>Macacao Plus</p>
-        <a id='mac+tp' href="./categorias/macTp.html"
+        <a href="./categorias/macTp.html"
           >Ver produtos →</a>
       </li>
     </ul>
-
-    <script>
-      function tu(){
-        unico = true
-      }
-
-      function tp(){
-        plus = true
-      }
-
-      function lcl(){
-        legging = true
-      }
-
-      function scl(){
-        short = true
-      }
-
-      function mac(){
-        macacao = true
-      }
-
-
-      let productsClean = []; //armazenará o array com produtos >tratados<
-
-      async function fetchProducts(page = 1, dataProducts = []) {
-        const apiEndpoint = `https://lissfitness.com.br/wp-json/wc/v3/products?page=${page}&per_page=100&orderby=title&order=asc&stock_status=instock&consumer_key=ck_148198b90ab9d891ca88eb7368afec072dbe43d0&consumer_secret=cs_6be934eea1423037e5ff3e18ba247bd65a3eb856`;
-
-        console.log(`Fetching page: ${page}`);
-
-        const responseProducts = await fetch(apiEndpoint)
-          .then((x) => x.json())
-          .catch((e) => {
-            console.error(e); // error handling
-            return []; //returns no-results
-          });
-
-        console.log(
-          `Fetched ${responseProducts.length} ${
-            responseProducts.length !== 1 ? "items" : "item"
-          } on page ${page}`
-        );
-
-        responseProducts.forEach((product) => {
-          dataProducts.push(product);
-        });
-
-        page++;
-
-        if (responseProducts.length >= 100)
-          return fetchProducts(page, dataProducts);
-        else return dataProducts;
-      }
-
-      // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
-      fetchProducts().then((products) => {
-        let listIteration = []; // Lista que irá guardar todos os nomes (sem a cor) de produtos já processados
-
-        products.forEach((product) => {
-          // -> extrair a string de cor do nome do produto,
-          product.color_variations = product.name
-            .split(
-              /\b(Compressão |Suplex Poliamida |Dryfit |Tule | Trilobal |Jacquard Ondinha |Jacquard Zig |Jacquard Zebra |Jacquard Boreal |Jacquard Spot |Jacquard Chevry )\b/gm
-            )
-            .pop();
-
-          // -> extrair a informação de nome do produto até o nome do tecido, e gravar na variavel "name"
-          let name = product.name.split(" " + product.color_variations).shift();
-
-          let variationColor = {
-            color_name: product.color_variations,
-            images: product.images,
-            slug: product.slug,
-            permalink: product.permalink,
-            // date_created: product.date_created,
-          };
-
-          let productNew = {
-            id: product.id,
-            name: name,
-            status: product.status,
-            sku: product.sku,
-            price: product.price,
-            price_sale: product.price_sale,
-            price_interest: product.price_interest,
-            price_interest_sale: product.price_interest_sale,
-            on_sale: product.on_sale,
-            // stock_status: product.stock_status,
-            categories: product.categories,
-            images: product.images,
-            attributes: product.attributes,
-            color_variations: [],
-          };
-
-          // Caso o nome não exista na lista de iteração, fazer algumas coisas
-          if (listIteration.indexOf(name) === -1) {
-            // Registrar nome na lista de iteração para as próximas conferências em 'products'
-            listIteration.push((name = name));
-
-            productNew.color_variations.push(variationColor);
-            productsClean.push(productNew);
-          } else {
-            productsClean[productsClean.length - 1].color_variations.push(
-              variationColor
-            );
-          }
-        });
-      });
-    </script>
   </body>
 </html>
