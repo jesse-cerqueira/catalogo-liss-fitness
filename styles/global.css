@@ -306,6 +306,7 @@ h3, .h3 { font-size: 1.75rem; line-height: 1.25; }
 h4, .h4 { font-size: 1.5rem; line-height: 1.2; }
 h5, .h5 { font-size: 1.25rem; line-height: 1.2; }
 h6, .h6 { font-size: 1rem; line-height: 1.2; }
+.h7 { font-size: .875rem; line-height: 1.2; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 
@@ -315,7 +316,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 
 a {
   &.btn {
-    display: block;
+    display: inline-flex;
+    gap: 8px;
     width: fit-content;
     font-size: 1rem;
     text-decoration: none;
@@ -330,7 +332,12 @@ a {
     &.btn-primary {
       background-color: #BF208F;
     }
+
   }
+}
+
+.wrapper-actions {
+  text-align: center;
 }
 
 .wrapper-body {

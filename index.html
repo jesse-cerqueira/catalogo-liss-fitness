@@ -76,6 +76,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 16px;
+        padding-bottom: 48px;
 
         & li {
           list-style-type: none;
@@ -84,7 +85,12 @@
           object-fit: cover;
           width: 100%;
           border-radius: 12px;
+          margin-bottom: 12px;
         }
+
+        a { color: #BF208F; text-decoration: none; }
+
+        & p { margin-bottom: 8px; }
       }
 
       .h6 { margin-bottom: 1.25rem; }
@@ -97,7 +103,7 @@
       }
 
       .loader {
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
@@ -138,38 +144,38 @@
       <ul class="list-products">
         <li>
           <img src="/img/Legging Unico.webp" alt="" />
-          <p>Legging + Top Tamanho Unico</p>
-          <a class='leg+Tu' href="./categorias/legTu.html"
+          <p class="h6">Legging + Top Tamanho Único</p>
+          <a class='leg+Tu h7' href="./categorias/legTu.html"
             >Ver produtos →</a>
         </li>
         <li>
           <img src="img/Legging Plus.webp" alt="" />
-          <p>Legging + Top Plus Size</p>
-          <a class='leg+Tp' href="./categorias/legTp.html"
+          <p class="h6">Legging + Top Plus Size</p>
+          <a class='leg+Tp h7' href="./categorias/legTp.html"
             >Ver produtos →</a>
         </li>
         <li>
           <img src="/img/Short Unico.webp" alt="" />
-          <p>Short + Top Tamanho Unico</p>
-          <a class='sho+Tu' href="./categorias/shoTu.html"
+          <p class="h6">Short + Top Tamanho Único</p>
+          <a class='sho+Tu h7' href="./categorias/shoTu.html"
             >Ver produtos →</a>
         </li>
         <li>
           <img src="img/Short Plus.webp" alt="" />
-          <p>Short + Top Plus Size</p>
-          <a class='sho+Tp' href="./categorias/shoTp.html"
+          <p class="h6">Short + Top Plus Size</p>
+          <a class='sho+Tp h7' href="./categorias/shoTp.html"
           >Ver produtos →</a>
         </li>
         <li>
           <img src="img/Macacao Unico.webp" alt="" />
-          <p>Macacao Único</p>
-          <a class='mac+tu' href="./categorias/macTu.html"
+          <p class="h6">Macacão Tamanho Único</p>
+          <a class='mac+tu h7' href="./categorias/macTu.html"
             >Ver produtos →</a>
         </li>
         <li>
           <img src="/img/Macacao Plus.webp" alt="" />
-          <p>Macacao Plus</p>
-          <a class='mac+tp' href="./categorias/macTp.html"
+          <p class="h6">Macacão Plus Size</p>
+          <a class='mac+tp h7' href="./categorias/macTp.html"
             >Ver produtos →</a>
         </li>
       </ul>
