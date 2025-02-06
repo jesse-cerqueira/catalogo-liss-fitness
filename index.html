@@ -134,6 +134,27 @@
         left: 50%;
         transform: translateX(-50%);
       }
+
+      /* Animation stuff */
+      .slide-in {
+        transition: transform .5s ease-out, opacity .4s ease-out;
+      }
+      
+      .hidden .slide-in {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      
+      .slide-in {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+
+      .delay-0 { transition-delay: 0; }
+      .delay-1 { transition-delay: 0.125s; }
+      .delay-2 { transition-delay: 0.250s; }
+      .delay-3 { transition-delay: 0.375s; }
+      .delay-4 { transition-delay: 0.500s; }
     </style>
   </head>
   <body>
@@ -156,8 +177,8 @@
       </svg>
       <section class="intro">
         <div>
-          <h1>Catálogo</h1>
-          <svg class="logo" width="157" height="58" viewBox="0 0 157 58" fill="none">
+          <h1 class="slide-in delay-0">Catálogo</h1>
+          <svg class="logo slide-in delay-1" width="157" height="58" viewBox="0 0 157 58" fill="none">
             <path d="M54.7647 56.8529H53.3457V46.6133H58.9215V47.8605H54.7647V51.2254H58.3052V52.4726H54.7647V56.8529Z" fill="#544F45"/>
             <path d="M70.546 56.8529H69.127V46.6133H70.546V56.8529Z" fill="#544F45"/>
             <path d="M85.1983 56.8529H83.7793V47.8605H80.3105V46.6133H88.667V47.8605H85.1983V56.8529Z" fill="#544F45"/>
@@ -175,7 +196,7 @@
             <path d="M95.3539 34.8084C94.9217 34.8084 94.5975 34.4802 94.5975 33.7695C94.5975 32.5116 95.6245 29.2304 96.9756 25.4575C98.3803 21.6841 99.1766 18.1536 99.4615 16.8171C100.032 14.138 97.9647 12.4254 95.7497 12.3669C92.2671 12.275 88.9414 13.9196 86.3377 17.2427L87.3612 17.9386C88.5798 16.4933 89.6124 15.7782 90.1661 15.7782C90.7605 15.7782 91.193 15.9422 91.193 16.9263C91.193 18.6762 89.5716 22.559 88.653 25.0745C87.5186 28.4102 85.8965 32.4022 85.8965 34.3161C85.8965 36.7772 88.1677 38.0895 90.2219 38.0895C93.6555 38.0895 97.1499 36.1166 99.6547 33.4045L98.7097 32.7618C97.4386 34.0251 96.1245 34.8084 95.3539 34.8084Z" fill="#544F45"/>
           </svg>
         </div>
-        <div class="card-link novidades" style="background-image: url('./img/cover-intro.webp')">
+        <div class="card-link novidades slide-in delay-2" style="background-image: url('./img/cover-intro.webp')">
           <a class="btn btn-md btn-primary" href="./categorias/newer.html">
             <div>Ver novidades</div>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -184,7 +205,7 @@
           </a>
         </div>
       </section>
-      <section class="categories">
+      <section class="categories slide-in delay-3">
         <h2 class="h6">Navegue pelas categorias</h2>
         <ul class="list-products">
           <li>
