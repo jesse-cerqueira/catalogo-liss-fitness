@@ -137,14 +137,14 @@
 
       /* Animation stuff */
       .slide-in {
-        transition: transform .5s ease-out, opacity .4s ease-out;
+        transition: transform 0.9s cubic-bezier(0, 0.5, 0.15, 1), opacity .5s ease-out;
       }
-      
+
       .hidden .slide-in {
         transform: translateY(20px);
         opacity: 0;
       }
-      
+
       .slide-in {
         transform: translateY(0px);
         opacity: 1;
