@@ -8,10 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/category-page.css" />
@@ -19,8 +16,8 @@
       const loaded = document.getElementsByClassName('loaded')
       const loader = document.getElementsByClassName('loader')
       function load(){
-          loaded[0].classList.toggle('hidden')
-          loader[0].classList.toggle('hidden')
+        loaded[0].classList.toggle('hidden')
+        loader[0].classList.toggle('hidden')
       }
 
       window.addEventListener('DOMContentLoaded', function (){
@@ -124,6 +121,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        img {
+          width: 33%;
+          max-width: 250px;
+          height: auto;
+        }
       }
 
       .gradient-top {
@@ -158,7 +161,7 @@
     </style>
   </head>
   <body>
-    <div class="loader hidden"><img src="./img/loading.gif" alt="carregamento"></div>
+    <div class="loader hidden"><img width="100" height="100" src="./img/loading.gif" alt=""></div>
     <div class="wrapper-body loaded">
       <svg class="gradient-top" width="1800" height="1800" viewBox="0 0 1800 1800" fill="none">
         <g opacity="0.05" filter="url(#filter0_f_4411_1612)">
