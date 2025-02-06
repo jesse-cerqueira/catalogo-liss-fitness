@@ -191,7 +191,7 @@ function arrangeList() {
           <span class="product-price-details">no PIX, ou até 3× de R$ <span class="product-price-3x-value">${Number(
       (product.price * 1.1) / 3
     ).toFixed(2)}</span></span>
-    <p class ="sku">SKU: ${product.sku}</p>
+    <p class ="sku" style="display: none">SKU: ${product.sku}</p>
         </div>
         ${product.color_variations ? swatchesColor(product) : ""}
         
