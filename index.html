@@ -29,7 +29,7 @@
 
       async function fetchProducts() {
         const apiEndpoint = `https://script.google.com/macros/s/AKfycbyOIoDG-vn2lDNgsvUxvzFhpqfGXLDQEWTUVrQBlqOJO5wyrmKoLukNKPJXozdzxZyN/exec`;
-      
+
         const responseProducts = await fetch(apiEndpoint)
           .then((x) => x.json())
           .catch((e) => {
@@ -49,13 +49,13 @@
         padding-bottom: 4rem;
 
         text-align: center;
-        
+
         & .logo {
           display: inline-block;
         }
       }
 
-      
+
       .card-link {
         border-radius: 12px;
         padding: .75rem;
@@ -64,7 +64,7 @@
           display: flex;
           flex-direction: column;
           justify-content: end;
-          
+
           min-height: 157px;
           background-size: cover;
           aspect-ratio: 353 / 250;
@@ -91,11 +91,13 @@
 
         a { color: #BF208F; text-decoration: none; }
 
-        & p { margin-bottom: 8px; }
+        & h3 { margin-bottom: 8px; }
       }
 
       .h6 { margin-bottom: 1.25rem; }
-      
+
+      .intro h1 { font-size: 1rem; line-height: 1; text-transform: uppercase; letter-spacing: .2em; opacity: .5; margin-bottom: 24px; }
+
       .loader, .loaded { transition: opacity .2s ease-in-out; }
 
       .hidden{
@@ -119,7 +121,7 @@
     <div class="loader hidden"><img src="./img/loading.gif" alt="carregamento"></div>
     <div class="wrapper-body loaded">
       <div class="intro">
-        <div>Catálogo</div>
+        <h1>Catálogo</h1>
         <svg class="logo" width="157" height="58" viewBox="0 0 157 58" fill="none">
           <path d="M54.7647 56.8529H53.3457V46.6133H58.9215V47.8605H54.7647V51.2254H58.3052V52.4726H54.7647V56.8529Z" fill="#544F45"/>
           <path d="M70.546 56.8529H69.127V46.6133H70.546V56.8529Z" fill="#544F45"/>
@@ -149,54 +151,66 @@
       <h2 class="h6">Navegue pelas categorias</h2>
       <ul class="list-products">
         <li>
-          <img src="img/Legging Unico.webp" alt="" />
-          <p class="h6">Legging + Top Tamanho Único</p>
-          <a class='leg+Tu h7' href="./categorias/legTu.html"
+          <a href="./categorias/legTu.html">
+            <img src="img/Legging Unico.webp" alt="" />
+          </a>
+          <h3 class="h6">Legging + Top<br> Tamanho Único</h3>
+          <a class='leg+Tu h7 link-solo' href="./categorias/legTu.html"
             ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>
 
         </li>
         <li>
-          <img src="img/Legging Plus.webp" alt="" />
-          <p class="h6">Legging + Top Plus Size</p>
-          <a class='leg+Tp h7' href="./categorias/legTp.html"
+          <a href="./categorias/legTp.html">
+            <img src="img/Legging Plus.webp" alt="" />
+          </a>
+          <h3 class="h6">Legging + Top<br> Plus Size</h3>
+          <a class='leg+Tp h7 link-solo' href="./categorias/legTp.html"
             ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>
 
         </li>
         <li>
-          <img src="img/Short Unico.webp" alt="" />
-          <p class="h6">Short + Top Tamanho Único</p>
-          <a class='sho+Tu h7' href="./categorias/shoTu.html"
+          <a href="./categorias/shoTu.html">
+            <img src="img/Short Unico.webp" alt="" />
+          </a>
+          <h3 class="h6">Short + Top<br> Tamanho Único</h3>
+          <a class='sho+Tu h7 link-solo' href="./categorias/shoTu.html"
             ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>
 
         </li>
         <li>
-          <img src="img/Short Plus.webp" alt="" />
-          <p class="h6">Short + Top Plus Size</p>
-          <a class='sho+Tp h7' href="./categorias/shoTp.html"
+          <a href="./categorias/shoTp.html">
+            <img src="img/Short Plus.webp" alt="" />
+          </a>
+          <h3 class="h6">Short + Top<br> Plus Size</h3>
+          <a class='sho+Tp h7 link-solo' href="./categorias/shoTp.html"
           ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>
 
         </li>
         <li>
-          <img src="img/Macacao Unico.webp" alt="" />
-          <p class="h6">Macacão Tamanho Único</p>
-          <a class='mac+tu h7' href="./categorias/macTu.html"
+          <a href="./categorias/macTu.html">
+            <img src="img/Macacao Unico.webp" alt="" />
+          </a>
+          <h3 class="h6">Macacões e Macaquinhos<br> Tamanho Único</h3>
+          <a class='mac+tu h7 link-solo' href="./categorias/macTu.html"
             ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>
 
         </li>
         <li>
-          <img src="img/Macacao Plus.webp" alt="" />
-          <p class="h6">Macacão Plus Size</p>
-          <a class='mac+tp h7' href="./categorias/macTp.html"
+          <a href="./categorias/macTp.html">
+            <img src="img/Macacao Plus.webp" alt="" />
+          </a>
+          <h3 class="h6">Macacões e Macaquinhos<br> Plus Size</h3>
+          <a class='mac+tp h7 link-solo' href="./categorias/macTp.html"
             ><div>Ver produtos</div><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M9 3L14 8M14 8L9 13M14 8H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></a>

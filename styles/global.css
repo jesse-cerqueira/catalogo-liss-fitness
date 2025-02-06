@@ -338,7 +338,12 @@ a {
     &.btn-primary {
       background-color: #BF208F;
     }
+  }
 
+  &.link-solo {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
   }
 }
 
