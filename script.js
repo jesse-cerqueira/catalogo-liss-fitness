@@ -154,6 +154,7 @@ function arrangeList() {
     `;
   }
 
+/*
   function swatchesSize(arr) {
     return `
       <div class="wrapper-swatches-size">
@@ -165,6 +166,7 @@ function arrangeList() {
       </div>
     `;
   }
+*/
 
   function swatchesColor(arr) {
     return `
@@ -177,12 +179,11 @@ function arrangeList() {
       </div>
     `;
   }
-
   function productTemplate(product) {
     return `
       <article id="${product.name}" class="wrapper-product">
         <header>
-          <h2 class="h5">${product.name}</h2>
+          <h2 class="h5">${product.name}   <p class="variation-name caps">${product.color_variations[0].color_name}</p></h2>
         </header>
         <div class="product-prices">
           <span class="product-price">R$ <span class="product-price-value">${Number(
@@ -265,7 +266,12 @@ function arrangeList() {
       color.addEventListener("click", function () {
         ind = arrySwatchColor.indexOf(color);
         const colorVar = div.querySelector('.variation-name')
-        //            colorVar.innerHTML = product.color_variations[ind].color_name
+        let wawawa = arrySwatchColor[ind]
+        let colore = wawawa.className
+        colore = colore.slice(13).replaceAll('-',' ')
+
+//        colorVar.innerHTML = product.color_variations[ind].color_name
+        colorVar.innerHTML = colore
         SwipeOut.slideTo(ind, 0);
 
       });
