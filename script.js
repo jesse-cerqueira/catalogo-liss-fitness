@@ -23,8 +23,11 @@ function filterProducts() {
   else if (filter.macacaoOn) {
     baseTipo = 'macacao';
   }
-  else {
+  else if (filter.blusaOn){
     baseTipo = 'blusa';
+  }
+  else if (filter.novidade){
+    baseTipo = 'newer'
   }
 
   let listaSelecionada = skuList[baseTipo]
@@ -35,15 +38,18 @@ function filterProducts() {
     baseTamanho = 'TP'
   }
 
-
   responseProducts.forEach((product) => {
+  if(baseTipo != 'newer'){
     if (listaSelecionada.includes(product.SKU1) && product.SKU4 == baseTamanho) {
-      products.push(product);
-    }
+      products.push(product);}
+  } 
+  else {
+    if (product.NOVIDADE == true) {
+      products.push(product);}
+  }
   });
   return products
 }
-
 
 // Executa a função de receber os itens da API e salvar como .json e gera uma lista tratada a partir das informações obtidas
 function arrangeList() {
