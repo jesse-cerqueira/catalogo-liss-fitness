@@ -15,20 +15,16 @@ const vendedora = sessionStorage.getItem('vend')
 switch (vendedora){
   case '0':
     whatsappNumber = zaps.mey
-    console.log('mey')
     break
   case '1': 
     whatsappNumber = zaps.nic
-    console.log('nic')
     break
   case '2':
     whatsappNumber = zaps.key
-    console.log('key')
     break
   default:
     whatsappNumber = [zaps.mey, zaps.nic, zaps.key][Math.floor(Math.random() * 3 )]
-    console.log('random')
-    console.log(whatsappNumber)
+
 }
 
 
@@ -245,9 +241,7 @@ function arrangeList() {
                 </div>
         </div>
         <div class="wrapper-actions">
-          <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name
-      }%20${product.color_variations[0].color_name
-      }" target="blank">Comprar com atendente</a>
+          <a class="btn btn-md btn-primary" href="https://api.whatsapp.com/send?phone=5527${whatsappNumber}&text=Gostaria%20de%20mais%20informações%20sobre%20${product.name}" target="blank">Comprar com atendente</a>
         </div>
       </article>
       `;
