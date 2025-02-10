@@ -297,7 +297,7 @@ body {
   font-feature-settings: "ss03" 1;
   color: #1F141A;
 
-  caret-color: currentcolor;
+  caret-color: currentColor;
 }
 
 h1, .h1 { font-size: 2.5rem; line-height: 1.25; }
