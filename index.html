@@ -41,6 +41,9 @@
       }
       fetchProducts()
 
+      const urlPar = new URLSearchParams(window.location.search);
+      const vendedora = urlPar.get('vend')
+      sessionStorage.setItem('vend', vendedora)
     </script>
     <style>
       ul {

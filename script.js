@@ -2,8 +2,35 @@ let responseProducts = JSON.parse(sessionStorage.getItem('allProducts'))
 let filter = JSON.parse(sessionStorage.getItem('filter'))
 let products = []
 let productsClean = []
-let whatsappNumber = "999498626";
+let whatsappNumber = '';
+const zaps = {
+  mey: 27999498626,
+  nic: 27996711314,
+  key: 27995067359
+}
 let colorsClean = [];
+
+
+const vendedora = sessionStorage.getItem('vend')
+switch (vendedora){
+  case '0':
+    whatsappNumber = zaps.mey
+    console.log('mey')
+    break
+  case '1': 
+    whatsappNumber = zaps.nic
+    console.log('nic')
+    break
+  case '2':
+    whatsappNumber = zaps.key
+    console.log('key')
+    break
+  default:
+    whatsappNumber = [zaps.mey, zaps.nic, zaps.key][Math.floor(Math.random() * 3 )]
+    console.log('random')
+    console.log(whatsappNumber)
+}
+
 
 function filterProducts() {
 
