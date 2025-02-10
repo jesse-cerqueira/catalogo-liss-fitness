@@ -255,20 +255,20 @@ function arrangeList() {
 
   const artigo = Array.from(document.querySelectorAll("article"));
 
-  
+
   artigo.forEach((div) => {
     const swipeOutElement = div.querySelector(".swiper-outer");
     const swipeOut = swipeOutElement ? swipeOutElement.swiper : null;
-    const arrySwatchColor =  Array.from(div.getElementsByClassName("swatch-color"));
+    const arrySwatchColor = Array.from(div.getElementsByClassName("swatch-color"));
     const arryArticle = Array.from(document.getElementsByClassName("wrapper-product"));
-    let   artInd = arryArticle.indexOf(div) 
+    let artInd = arryArticle.indexOf(div)
     const colorVar = div.querySelector('.variation-name')
 
-    swipeOut.on('slideChange', function() {
+    swipeOut.on('slideChange', function () {
       let slideInd = swipeOut.activeIndex
       colorVar.innerHTML = productsClean[artInd].color_variations[slideInd].color_name
-      
-})
+
+    })
     arrySwatchColor.forEach((color) => {
       color.addEventListener("click", function () {
         let colorInd = arrySwatchColor.indexOf(color);
