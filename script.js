@@ -9,9 +9,9 @@ function filterProducts() {
 
   const skuList = {
     legging: ['LBO', 'LCA', 'LCL', 'LCO', 'LCZ', 'LDU', 'LEM', 'LFA', 'LLA', 'LLO', 'LMO', 'LRE', 'LSL', 'LTR'],
-    short: ['SCL', 'SBO', 'SML', 'SCA', 'SCL', 'SCO', 'SCR', 'SCZ', 'SFA', 'SJE', 'SLY', 'SOR', 'SRE', 'SSA', 'SSM', 'SSN', 'SDU'],
+    short:   ['SCL', 'SBO', 'SML', 'SCA', 'SCL', 'SCO', 'SCR', 'SCZ', 'SFA', 'SJE', 'SLY', 'SOR', 'SRE', 'SSA', 'SSM', 'SSN', 'SDU'],
     macacao: ['MAC', 'MAQ'],
-    blusa: ['BLU', 'BLO', 'CRO', 'REG', 'RFC', 'RCC', 'BLB']
+    blusa:   ['BLU', 'BLO', 'CRO', 'REG', 'RFC', 'RCC', 'BLB']
   }
 
   if (filter.shortOn) {
@@ -61,10 +61,8 @@ function arrangeList() {
       )
       .pop()
       .trim();
-
     // -> extrair a string do nome do produto até o nome do tecido, antes de " cor", e gravar a string reusltante na variavel "name"
     let name = product.NOME.split(" " + product.color_variations).shift();
-
     let variationColor = {
       color_name: product.color_variations,
       color_slug: product.color_variations
@@ -76,17 +74,17 @@ function arrangeList() {
       images: product.IMG,
       //slug: product.slug,
       //permalink: product.permalink,
-      // 'date_created': product.date_created,
+      //'date_created': product.date_created,
     };
 
     let productNew = {
-      id: product.ID,
+      id:   product.ID,
       name: name,
       status: product.ESTOQUE,
       price: (product.PREÇO * 0.9090909090909),
       images: product.IMG,
       color_variations: [],
-      sku: product.SKU,
+      sku:  product.SKU,
       sku1: product.SKU1,
       sku2: product.SKU2,
       sku3: product.SKU3,
@@ -259,26 +257,29 @@ function arrangeList() {
     direction: "horizontal",
     spaceBetween: 20,
   });
-  const artigo = Array.from(document.querySelectorAll("article"));
-  artigo.forEach((div) => {
-    const SwipeOutElement = div.querySelector(".swiper-outer");
-    const SwipeOut = SwipeOutElement ? SwipeOutElement.swiper : null;
-    const arrySwatchColor = Array.from(
-      div.getElementsByClassName("swatch-color")
-    );
 
+  const artigo = Array.from(document.querySelectorAll("article"));
+
+
+  artigo.forEach((div) => {
+    const swipeOutElement = div.querySelector(".swiper-outer");
+    const swipeOut = swipeOutElement ? swipeOutElement.swiper : null;
+    const arrySwatchColor = Array.from(div.getElementsByClassName("swatch-color"));
+    const arryArticle = Array.from(document.getElementsByClassName("wrapper-product"));
+    let artInd = arryArticle.indexOf(div)
+    const colorVar = div.querySelector('.variation-name')
+
+    swipeOut.on('slideChange', function () {
+      let slideInd = swipeOut.activeIndex
+      colorVar.innerHTML = productsClean[artInd].color_variations[slideInd].color_name
+
+    })
     arrySwatchColor.forEach((color) => {
       color.addEventListener("click", function () {
-        ind = arrySwatchColor.indexOf(color);
-        const colorVar = div.querySelector('.variation-name')
-        let wawawa = arrySwatchColor[ind]
-        let colore = wawawa.className
-        colore = colore.slice(13).replaceAll('-',' ')
-
-//        colorVar.innerHTML = product.color_variations[ind].color_name
+        let colorInd = arrySwatchColor.indexOf(color);
+        let colore = productsClean[artInd].color_variations[colorInd].color_name
         colorVar.innerHTML = colore
-        SwipeOut.slideTo(ind, 0);
-
+        swipeOut.slideTo(colorInd, 0);
       });
     });
   });
