@@ -58,7 +58,9 @@ article {
     .sku {
       opacity: 0.5;
     }
-
+    .caps{
+    text-transform: capitalize;
+    }
     .wrapper-swatches-color {
       display: flex;
       flex-wrap: wrap;
